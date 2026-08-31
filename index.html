@@ -485,6 +485,28 @@ h2{
 .callout strong{font-size:28px;display:block;color:var(--black);margin-bottom:8px}
 .callout p{margin:0;color:#645f5b;font-size:18px;line-height:1.55}
 
+
+/* WHY VERRA — interactive closing section */
+.why-verra{background:linear-gradient(135deg,#2f2c2a 0%,#3D3935 55%,#283c3d 100%);color:#fff;overflow:hidden;position:relative}
+.why-verra:before{content:"";position:absolute;width:620px;height:620px;border-radius:50%;right:-180px;top:-180px;background:radial-gradient(circle,rgba(29,130,150,.28),transparent 66%);pointer-events:none}
+.why-verra .eyebrow{color:#A9C23F}.why-verra h2{color:#fff;max-width:900px}.why-verra .lead{color:rgba(255,255,255,.72);max-width:840px}
+.verra-explorer{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;margin-top:44px}
+.verra-wheel{position:relative;min-height:560px;display:grid;place-items:center}
+.verra-ring{position:absolute;border:1px solid rgba(255,255,255,.12);border-radius:50%;width:450px;height:450px}.verra-ring.r2{width:340px;height:340px;border-color:rgba(169,194,63,.25)}
+.verra-core{position:relative;z-index:3;width:190px;height:190px;border-radius:50%;display:grid;place-items:center;text-align:center;padding:25px;background:linear-gradient(145deg,#1D8296,#464E7E);border:2px solid #A9C23F;box-shadow:0 0 0 14px rgba(169,194,63,.06),0 18px 50px rgba(0,0,0,.28);transition:.45s ease}
+.verra-core strong{font-size:24px;line-height:1.05}.verra-core span{display:block;font-size:11px;letter-spacing:.11em;margin-top:9px;color:rgba(255,255,255,.72)}
+.verra-node{position:absolute;z-index:4;width:155px;min-height:92px;border:1px solid rgba(255,255,255,.2);border-radius:18px;background:#3D3935;color:#fff;padding:15px 17px;text-align:left;cursor:pointer;transition:transform .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease;font:inherit}
+.verra-node b{display:block;font-size:15px;margin-bottom:5px}.verra-node small{color:rgba(255,255,255,.58);font-size:11px;line-height:1.35}.verra-node:hover,.verra-node.active{transform:translateY(-4px);border-color:#A9C23F;box-shadow:0 10px 28px rgba(0,0,0,.2)}
+.verra-node.n1{top:20px;left:50%;margin-left:-78px}.verra-node.n2{right:0;top:190px}.verra-node.n3{bottom:25px;left:50%;margin-left:-78px}.verra-node.n4{left:0;top:190px}
+.verra-line{position:absolute;height:1px;width:160px;background:linear-gradient(90deg,rgba(169,194,63,.15),#A9C23F,rgba(29,130,150,.15));transform-origin:left center;opacity:.5;transition:.35s}.verra-line.l1{left:50%;top:175px;transform:rotate(-90deg)}.verra-line.l2{left:58%;top:50%;transform:rotate(-3deg)}.verra-line.l3{left:50%;top:67%;transform:rotate(90deg)}.verra-line.l4{left:27%;top:50%;transform:rotate(180deg)}
+.verra-detail{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:32px;min-height:365px;display:flex;flex-direction:column;justify-content:center}
+.verra-detail .tag{font-size:11px;letter-spacing:.12em;color:#A9C23F;font-weight:800;text-transform:uppercase}.verra-detail h3{font-size:34px;margin:10px 0 14px;color:#fff}.verra-detail p{font-size:17px;line-height:1.65;color:rgba(255,255,255,.74);margin:0}.verra-detail .proof{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-weight:700;color:#fff}
+.bring-together{margin-top:20px;border:0;border-radius:999px;background:#A9C23F;color:#3D3935;padding:14px 20px;font-weight:800;cursor:pointer;align-self:flex-start}.bring-together:hover{filter:brightness(1.05)}
+.verra-explorer.combined .verra-node{border-color:#A9C23F;background:rgba(29,130,150,.22)}.verra-explorer.combined .verra-core{transform:scale(1.08);box-shadow:0 0 0 22px rgba(169,194,63,.08),0 18px 55px rgba(0,0,0,.3)}.verra-explorer.combined .verra-line{opacity:1;height:2px}
+.verra-finale{text-align:center;margin-top:58px;padding-top:44px;border-top:1px solid rgba(255,255,255,.13)}.verra-finale strong{display:block;font-size:clamp(30px,4vw,58px);line-height:1.05}.verra-finale span{display:block;margin-top:10px;font-size:clamp(22px,3vw,40px);color:#A9C23F;font-weight:800}
+@media(max-width:900px){.verra-explorer{grid-template-columns:1fr}.verra-wheel{min-height:520px}.verra-node{width:140px}.verra-node.n2{right:2%}.verra-node.n4{left:2%}}
+@media(max-width:560px){.verra-wheel{min-height:600px}.verra-ring{width:310px;height:310px}.verra-ring.r2{width:240px;height:240px}.verra-core{width:150px;height:150px}.verra-node{width:135px}.verra-node.n1{top:5px}.verra-node.n2{right:0;top:215px}.verra-node.n3{bottom:5px}.verra-node.n4{left:0;top:215px}.verra-line{display:none}}
+
 footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--green)}
 .footerin{display:flex;justify-content:space-between;align-items:center;gap:24px}
 .footerin img{height:54px}
@@ -682,37 +704,39 @@ footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--
  </div>
 </div></section>
 
-<section id="register" class="alt"><div class="wrap">
- <div class="eyebrow">Industry safety intelligence</div>
- <h2>A serious safety risk shouldn't disappear because someone changes platforms.</h2>
- <div class="registry-grid">
-   <div class="registry-hero">
-     <h3>Industry Safety Register</h3>
-     <p>A tightly governed, central safety intelligence capability for substantiated serious events or exclusions — accessible only to authorised platforms and relevant government bodies.</p>
-     <p><strong>Not a blacklist.</strong> Identity verification, evidence thresholds, appeals, privacy, access controls and independent oversight are fundamental.</p>
-   </div>
-   <div class="regflow">
-     <div class="regitem"><div class="num">1</div><div><strong>Serious event investigated</strong><div class="muted">Evidence gathered by the platform.</div></div></div>
-     <div class="regitem"><div class="num">2</div><div><strong>Threshold verified</strong><div class="muted">Defined serious-safety criteria are met.</div></div></div>
-     <div class="regitem"><div class="num">3</div><div><strong>Independent review</strong><div class="muted">Identity, evidence, fairness and proportionality checked.</div></div></div>
-     <div class="regitem"><div class="num">4</div><div><strong>Controlled record</strong><div class="muted">Strictly limited, auditable access.</div></div></div>
-     <div class="regitem"><div class="num">5</div><div><strong>Cross-platform check</strong><div class="muted">Authorised operators can identify verified serious safety concerns.</div></div></div>
-   </div>
- </div>
-</div></section>
-
 <section><div class="wrap">
  <div class="eyebrow">Commercial pathways</div>
  <h2>One network. Multiple potential customers.</h2>
  <div class="grid3">
   <div class="card"><h3>Mobility operators</h3><p>24/7 safety capability without building a dedicated internal control centre.</p><div class="money">Managed service</div></div>
-  <div class="card"><h3>Government & regulators</h3><p>Industry assurance, systemic-risk intelligence and greater visibility of operator performance.</p><div class="money">Assurance & intelligence</div></div>
+  <div class="card"><h3>Government and regulators</h3><p>Industry assurance, systemic-risk intelligence and greater visibility of operator performance.</p><div class="money">Assurance and intelligence</div></div>
   <div class="card"><h3>Insurers</h3><p>Earlier intervention, better evidence, stronger claims information and preventative risk intelligence.</p><div class="money">Risk services</div></div>
  </div>
- <div class="callout">
-   <strong>The technology exists. The operating layer is fragmented.</strong>
-   <p>The opportunity is not another telematics product. It is connecting detection, human response, investigation, insurance, governance and regulatory assurance into one managed safety ecosystem.</p>
+</div></section>
+
+<section class="why-verra" id="why-verra"><div class="wrap">
+ <div class="eyebrow">Why Verra Mobility?</div>
+ <h2>We already have many of the pieces.</h2>
+ <p class="lead">This concept brings together capabilities Verra already understands — road-safety technology, central monitoring, regulated environments and a business built around making roads safer.</p>
+ <div class="verra-explorer" id="verraExplorer">
+  <div class="verra-wheel" aria-label="Interactive Verra capability explorer">
+   <div class="verra-ring"></div><div class="verra-ring r2"></div>
+   <div class="verra-line l1"></div><div class="verra-line l2"></div><div class="verra-line l3"></div><div class="verra-line l4"></div>
+   <div class="verra-core" id="verraCore"><div><strong>VERRA<br>MOBILITY</strong><span>EXISTING CAPABILITY</span></div></div>
+   <button type="button" class="verra-node n1 active" data-verra="technology"><b>Technology</b><small>Detection • connectivity • data</small></button>
+   <button type="button" class="verra-node n2" data-verra="monitoring"><b>Central monitoring</b><small>Vehicles • roads • real-time activity</small></button>
+   <button type="button" class="verra-node n3" data-verra="regulators"><b>Regulatory relationships</b><small>Government • assurance • trust</small></button>
+   <button type="button" class="verra-node n4" data-verra="roadsafety"><b>Road safety</b><small>Already at the core</small></button>
+  </div>
+  <aside class="verra-detail" aria-live="polite">
+   <div class="tag" id="verraTag">Existing strength — Technology</div>
+   <h3 id="verraTitle">We already build and operate road-safety technology.</h3>
+   <p id="verraText">Verra's technology capability provides a foundation for detection, connectivity, data capture, integration and scalable safety services. The opportunity is to apply those capabilities to a broader mobility-safety operating model.</p>
+   <div class="proof" id="verraProof">Potential advantage: less to build from zero.</div>
+   <button type="button" class="bring-together" id="bringTogether">Bring it together →</button>
+  </aside>
  </div>
+ <div class="verra-finale"><strong>We already help make roads safer.</strong><span>Could we help make every journey safer too?</span></div>
 </div></section>
 
 <footer><div class="wrap footerin"><img src="verra-logo.png" alt="Verra Mobility"><div>Mobility Safety Network • Internal concept proposal</div></div></footer>
@@ -849,5 +873,23 @@ document.querySelectorAll('.chip').forEach(ch=>ch.addEventListener('click',()=>{
 render();details();view();
 })();
 </script>
+
+<script>
+(()=>{
+ const root=document.getElementById('verraExplorer'); if(!root)return;
+ const data={
+  technology:{tag:'Existing strength — Technology',title:'We already build and operate road-safety technology.',text:"Verra's technology capability provides a foundation for detection, connectivity, data capture, integration and scalable safety services. The opportunity is to apply those capabilities to a broader mobility-safety operating model.",proof:'Potential advantage: less to build from zero.'},
+  monitoring:{tag:'Existing strength — Central monitoring',title:'We already understand central monitoring of activity on the road.',text:'Verra has experience with centralised monitoring environments and technology that observes what is happening around vehicles and road networks. That operational experience could provide a strong base for real-time mobility safety monitoring and escalation.',proof:'Potential advantage: operational experience with real-time road activity.'},
+  regulators:{tag:'Existing strength — Regulatory relationships',title:'We already work in regulated environments and alongside government.',text:'Trusted relationships with government and regulators, combined with experience in evidence, assurance and regulated road-safety programs, could be particularly valuable for common data standards, industry reporting and safety intelligence.',proof:'Potential advantage: credibility, assurance and an established government context.'},
+  roadsafety:{tag:'Existing strength — Road safety',title:'Making roads safer is already our core business.',text:"This is not a proposal for Verra to become a rideshare platform. It is an opportunity to explore another application of Verra's existing road-safety purpose — protecting people as they move through increasingly connected mobility ecosystems.",proof:'Potential advantage: strategic adjacency rather than an unrelated new market.'},
+  combined:{tag:'Potential new proposition',title:'Mobility Safety Operations',text:'Technology + central monitoring + regulatory relationships + road-safety experience could be combined into a shared operating layer for mobility platforms — detecting risk, supporting people, managing incidents and creating better industry intelligence.',proof:"The opportunity is not to build every component from scratch. It is to explore whether capabilities Verra already has can be combined in a new way."}
+ };
+ const tag=document.getElementById('verraTag'),title=document.getElementById('verraTitle'),text=document.getElementById('verraText'),proof=document.getElementById('verraProof'),btn=document.getElementById('bringTogether'),core=document.getElementById('verraCore');
+ function show(k){const d=data[k];tag.textContent=d.tag;title.textContent=d.title;text.textContent=d.text;proof.textContent=d.proof;root.querySelectorAll('.verra-node').forEach(n=>n.classList.toggle('active',n.dataset.verra===k));root.classList.toggle('combined',k==='combined');core.querySelector('strong').innerHTML=k==='combined'?'MOBILITY<br>SAFETY OPS':'VERRA<br>MOBILITY';core.querySelector('span').textContent=k==='combined'?'NEW OPPORTUNITY':'EXISTING CAPABILITY';btn.textContent=k==='combined'?'Explore the strengths ↑':'Bring it together →'}
+ root.querySelectorAll('.verra-node').forEach(n=>n.addEventListener('click',()=>show(n.dataset.verra)));
+ btn.addEventListener('click',()=>show(root.classList.contains('combined')?'technology':'combined'));
+})();
+</script>
+
 </body>
 </html>
