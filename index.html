@@ -147,7 +147,13 @@ h1 .accent{
 .orbit.one{width:500px;height:500px;border:1px solid rgba(29,130,150,.42)}
 .orbit.two{width:402px;height:402px;border:1px dashed rgba(29,130,150,.30);animation:spin 28s linear infinite}
 .orbit.three{width:310px;height:310px;border:1px solid rgba(169,194,63,.38);animation:spinReverse 20s linear infinite}
-.orbit.four{width:548px;height:548px;border:1px solid rgba(255,255,255,.08)}
+.orbit.four{width:548px;height:548px;border:1px solid rgba(255,255,255,.08);animation:spin 36s linear infinite}
+.orbit.four::before,.orbit.four::after{
+  content:"";position:absolute;width:8px;height:8px;border-radius:50%;
+  background:var(--teal);box-shadow:0 0 16px var(--teal),0 0 28px rgba(29,130,150,.45)
+}
+.orbit.four::before{top:-4px;left:50%;transform:translateX(-50%)}
+.orbit.four::after{bottom:-4px;left:50%;transform:translateX(-50%);background:var(--green);box-shadow:0 0 16px var(--green),0 0 28px rgba(169,194,63,.38)}
 .orbit.two::after,.orbit.three::after{
   content:"";position:absolute;width:8px;height:8px;border-radius:50%;top:-4px;left:50%;transform:translateX(-50%);
   background:var(--teal);box-shadow:0 0 16px var(--teal)
@@ -166,10 +172,12 @@ h1 .accent{
 
 .dot{
   position:absolute;left:50%;top:50%;z-index:7;width:142px;min-height:86px;padding:15px 15px 14px;border-radius:22px;
-  background:rgba(61,57,53,.80);border:1px solid rgba(29,130,150,.65);
-  backdrop-filter:blur(15px);box-shadow:0 14px 42px rgba(0,0,0,.22),inset 0 0 22px rgba(29,130,150,.04);
-  will-change:transform;transform:translate3d(-50%,-50%,0);backface-visibility:hidden;
-  transition:border-color .25s ease,box-shadow .25s ease
+  background:rgba(61,57,53,.96);border:1px solid rgba(29,130,150,.65);
+  box-shadow:0 14px 42px rgba(0,0,0,.22),inset 0 0 22px rgba(29,130,150,.04);
+  transform:translate3d(calc(-50% + var(--x,0px)),calc(-50% + var(--y,0px)),0);
+  backface-visibility:hidden;
+  transition:border-color .25s ease,box-shadow .25s ease;
+  animation:nodeFloat var(--float-duration,8s) ease-in-out var(--float-delay,0s) infinite alternate
 }
 .dot::before{content:"";display:block;width:21px;height:3px;border-radius:3px;background:var(--teal);margin-bottom:10px}
 .dot:nth-of-type(6)::before,.dot:nth-of-type(8)::before{background:var(--green)}
@@ -179,8 +187,12 @@ h1 .accent{
 @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
 @keyframes spinReverse{to{transform:translate(-50%,-50%) rotate(-360deg)}}
 @keyframes breathe{0%,100%{transform:scale(.94);opacity:.68}50%{transform:scale(1.04);opacity:1}}
+@keyframes nodeFloat{
+  0%{transform:translate3d(calc(-50% + var(--x,0px)),calc(-50% + var(--y,0px)),0)}
+  100%{transform:translate3d(calc(-50% + var(--x,0px) + var(--float-x,3px)),calc(-50% + var(--y,0px) + var(--float-y,-3px)),0)}
+}
 
-@media(prefers-reduced-motion:reduce){.orbit,.hero-canvas::before{animation:none!important}.dot{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.orbit,.hero-canvas::before,.dot{animation:none!important}.dot{transition:none!important}}
 /* SECTIONS */
 section{padding:94px 0}
 .eyebrow{color:var(--teal);font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}
@@ -462,32 +474,32 @@ footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--
 <script>
 (()=>{
   const canvas=document.getElementById('heroNetwork');
-  if(!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const nodes=[...canvas.querySelectorAll('.dot')].map((el,i)=>({
-    el,
-    base:Number(el.dataset.angle||0)*Math.PI/180,
-    radius:Number(el.dataset.radius||46)/100,
-    speed:Number(el.dataset.speed||.8),
-    phase:i*.83
-  }));
-  let start=null;
-  function frame(ts){
-    if(!start) start=ts;
-    const t=(ts-start)/1000;
+  if(!canvas) return;
+  const dots=[...canvas.querySelectorAll('.dot')];
+
+  function positionDots(){
     const R=Math.min(canvas.clientWidth,canvas.clientHeight);
-    nodes.forEach((n,i)=>{
-      // Slow, continuous orbital drift. Transform-only animation avoids layout
-      // recalculation and the tiny pixel jumps that made the cards shudder.
-      const drift=Math.sin(t*n.speed*.22+n.phase)*0.045;
-      const a=n.base+drift;
-      const rr=R*n.radius;
-      const x=Math.cos(a)*rr;
-      const y=Math.sin(a)*rr;
-      n.el.style.transform=`translate3d(calc(-50% + ${x}px), calc(-50% + ${y}px), 0)`;
+    dots.forEach((el,i)=>{
+      const angle=Number(el.dataset.angle||0)*Math.PI/180;
+      const radius=Number(el.dataset.radius||46)/100;
+      // Whole-pixel anchor positions stop transformed text/cards from shimmering.
+      const x=Math.round(Math.cos(angle)*R*radius);
+      const y=Math.round(Math.sin(angle)*R*radius);
+      el.style.setProperty('--x',`${x}px`);
+      el.style.setProperty('--y',`${y}px`);
+      el.style.setProperty('--float-duration',`${7.5 + (i%3)*1.4}s`);
+      el.style.setProperty('--float-delay',`${-i*1.15}s`);
+      el.style.setProperty('--float-x',`${i%2===0 ? 4 : -4}px`);
+      el.style.setProperty('--float-y',`${i%3===0 ? -3 : 3}px`);
     });
-    requestAnimationFrame(frame);
   }
-  requestAnimationFrame(frame);
+
+  positionDots();
+  let resizeTimer;
+  window.addEventListener('resize',()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer=setTimeout(positionDots,120);
+  },{passive:true});
 })();
 </script>
 
