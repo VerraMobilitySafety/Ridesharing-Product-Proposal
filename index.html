@@ -1,298 +1,223 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mobility Safety Network</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verra Mobility | Mobility Safety Network Proposal</title>
 <style>
 :root{
-  --bg:#0b0f0e;
-  --panel:#111816;
-  --panel2:#16201d;
-  --text:#f3f6f5;
-  --muted:#9eaaa6;
-  --line:#2a3833;
-  --green:#b7ff4a;
-  --teal:#4bd7b2;
-  --amber:#ffca66;
-  --red:#ff7f73;
-  --blue:#7fb8ff;
+  --black:#3D3935;
+  --green:#A9C23F;
+  --grey:#857874;
+  --teal:#1D8296;
+  --purple:#464E7E;
+  --white:#ffffff;
+  --off:#f6f6f4;
+  --ink:#292725;
+  --line:#d9d7d4;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-a{color:inherit;text-decoration:none}
-.wrap{width:min(1160px,calc(100% - 32px));margin:auto}
-nav{position:sticky;top:0;z-index:20;background:rgba(11,15,14,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
-.navin{height:68px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.02em}
-.mark{width:34px;height:34px;border:1px solid var(--green);border-radius:10px;display:grid;place-items:center;color:var(--green);font-weight:900}
-.navlinks{display:flex;gap:22px;color:var(--muted);font-size:14px}
-.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 18px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-weight:700}
-.btn.primary{background:var(--green);color:#0a0e0c;border-color:var(--green)}
-.hero{padding:100px 0 72px}
-.kicker{color:var(--green);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:12px}
-h1{font-size:clamp(48px,8vw,98px);line-height:.93;letter-spacing:-.055em;margin:16px 0 24px;max-width:1000px}
-.hero p{font-size:clamp(18px,2.5vw,25px);line-height:1.45;color:var(--muted);max-width:780px}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--white);color:var(--ink)}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(1180px,calc(100% - 36px));margin:auto}
+nav{position:sticky;top:0;z-index:20;background:rgba(61,57,53,.97);border-bottom:4px solid var(--green)}
+.navin{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{height:48px;width:auto;display:block}
+.navlinks{display:flex;gap:22px;color:white;font-size:14px}
+.pill{border:1px solid var(--green);border-radius:999px;padding:10px 15px;color:white;font-weight:700}
+.hero{background:var(--black);color:white;padding:96px 0 82px;overflow:hidden;position:relative}
+.hero:after{content:"";position:absolute;right:-120px;top:-120px;width:500px;height:500px;border:90px solid rgba(169,194,63,.08);border-radius:50%}
+.kicker{color:var(--green);font-weight:800;text-transform:uppercase;letter-spacing:.16em;font-size:12px}
+h1{font-size:clamp(48px,7vw,88px);line-height:.96;letter-spacing:-.05em;margin:15px 0 24px;max-width:950px}
+h1 span{color:var(--green)}
+.hero p{font-size:clamp(18px,2.2vw,24px);line-height:1.5;max-width:760px;color:#e7e5e3}
 .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.statrow{margin-top:72px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.stat{border-top:1px solid var(--line);padding-top:18px}
-.stat strong{font-size:28px}
-.stat span{display:block;color:var(--muted);margin-top:4px}
-section{padding:84px 0}
-.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-weight:800}
-h2{font-size:clamp(34px,5vw,62px);line-height:1;letter-spacing:-.04em;margin:12px 0 18px;max-width:880px}
-.lead{font-size:20px;line-height:1.5;color:var(--muted);max-width:780px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:24px}
-.card h3{margin:0 0 10px;font-size:20px}
-.card p{color:var(--muted);line-height:1.55;margin:0}
-.flow{margin-top:34px;display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
-.step{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px 14px;min-height:106px}
-.step b{display:block;color:var(--green);font-size:12px;margin-bottom:12px}
-.step strong{font-size:16px}
-.demo{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:34px}
-.timeline,.incident{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:24px}
-.timeline-row{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.06)}
-.timeline-row:last-child{border:0}
-.time{width:78px;color:var(--muted);font-variant-numeric:tabular-nums}
-.event{flex:1}
-.alert{color:var(--amber)}
-.critical{color:var(--red);font-weight:800}
-.good{color:var(--teal)}
-.badge{display:inline-flex;padding:6px 10px;border-radius:999px;background:#1a2723;border:1px solid var(--line);font-size:12px;color:var(--muted)}
-.incident h3{font-size:28px;margin:16px 0 12px}
-.bigtime{font-size:66px;line-height:1;color:var(--green);font-weight:900;letter-spacing:-.05em}
-.universe-shell{margin-top:34px;display:grid;grid-template-columns:1fr 320px;gap:16px}
-.universe{position:relative;background:radial-gradient(circle at center,rgba(183,255,74,.08),transparent 38%),var(--panel);border:1px solid var(--line);border-radius:22px;min-height:620px;overflow:hidden}
-.universe svg{width:100%;height:620px;display:block}
-.u-line{stroke:#31413c;stroke-width:1.5}
-.u-line.active{stroke:var(--green);stroke-width:2.5}
-.node{cursor:grab;touch-action:none}
-.node circle{stroke:#465a53;stroke-width:1.5}
-.node.selected circle{stroke:var(--green);stroke-width:4}
-.node text{fill:var(--text);font-size:12px;font-weight:800;pointer-events:none}
-.node .sub{fill:var(--muted);font-size:10px;font-weight:500}
-.side{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px}
-.side .label{font-size:11px;color:var(--green);text-transform:uppercase;letter-spacing:.12em;font-weight:800}
-.side h3{font-size:26px;margin:8px 0}
-.meta{color:var(--muted);font-size:14px}
-.sideblock{margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
-.sideblock b{display:block;margin-bottom:7px}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
-.chip{border:1px solid var(--line);background:transparent;color:var(--muted);padding:8px 11px;border-radius:999px;cursor:pointer}
-.chip.active{border-color:var(--green);color:var(--text);background:rgba(183,255,74,.08)}
-.registry{margin-top:34px;display:grid;grid-template-columns:.9fr 1.1fr;gap:16px}
-.regbox{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:26px}
-.reg-flow{display:flex;flex-direction:column;gap:12px}
-.reg-item{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:16px;background:var(--panel2)}
-.num{width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--green);color:#08100c;font-weight:900;flex:0 0 auto}
-.quote{font-size:clamp(28px,4vw,50px);line-height:1.08;letter-spacing:-.035em}
-.cols2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px}
-.price{font-size:14px;color:var(--muted)}
-.money{font-size:24px;font-weight:800;margin-top:6px}
-footer{padding:50px 0 70px;color:var(--muted);border-top:1px solid var(--line)}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:6px;padding:13px 18px;font-weight:800;border:2px solid var(--green)}
+.btn.primary{background:var(--green);color:var(--black)}
+.btn.secondary{color:white}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:68px;position:relative;z-index:1}
+.stat{border-top:2px solid var(--green);padding-top:16px}
+.stat strong{font-size:27px}.stat span{display:block;color:#d8d5d2;margin-top:5px}
+section{padding:82px 0}
+.alt{background:var(--off)}
+.eyebrow{color:var(--teal);font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+h2{font-size:clamp(34px,5vw,58px);line-height:1.03;letter-spacing:-.035em;margin:12px 0 18px;max-width:900px;color:var(--black)}
+.lead{font-size:20px;line-height:1.55;color:#625e5b;max-width:800px}
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:32px}
+.step{border-top:5px solid var(--green);background:white;padding:18px 14px;min-height:110px;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.step b{color:var(--teal);font-size:12px}.step strong{display:block;margin-top:15px}
+.demo{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:32px}
+.panel{border:1px solid var(--line);border-radius:12px;background:white;padding:24px}
+.tag{display:inline-flex;background:var(--purple);color:white;border-radius:4px;padding:6px 9px;font-size:11px;font-weight:800}
+.row{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid #eceae8}.row:last-child{border:0}
+.time{width:78px;color:var(--grey);font-variant-numeric:tabular-nums}
+.warn{color:#9a6d00}.crit{color:#a13d35;font-weight:800}.ok{color:var(--teal);font-weight:800}
+.big{font-size:68px;font-weight:900;letter-spacing:-.05em;color:var(--green);margin:16px 0 4px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}
+.chip{cursor:pointer;border:1px solid var(--line);background:white;color:var(--black);padding:9px 12px;border-radius:999px;font-weight:700}
+.chip.active{background:var(--purple);color:white;border-color:var(--purple)}
+.universe-shell{display:grid;grid-template-columns:1fr 320px;gap:16px}
+.universe{min-height:620px;background:var(--black);border-radius:14px;overflow:hidden;position:relative}
+.universe svg{display:block;width:100%;height:620px}
+.u-line{stroke:#77716c;stroke-width:1.4;opacity:.55}.u-line.active{stroke:var(--green);stroke-width:3;opacity:1}
+.node{cursor:grab;touch-action:none}.node circle{stroke:#aaa39e;stroke-width:1.5}.node.selected circle{stroke:var(--green);stroke-width:5}
+.node text{fill:white;font-size:12px;font-weight:800;pointer-events:none}.node .sub{fill:#d2cecb;font-size:10px;font-weight:500}
+.detail{background:white;border:1px solid var(--line);border-top:7px solid var(--green);border-radius:10px;padding:22px}
+.detail .type{color:var(--teal);font-weight:900;text-transform:uppercase;letter-spacing:.1em;font-size:11px}
+.detail h3{font-size:25px;margin:8px 0 5px;color:var(--black)}
+.block{border-top:1px solid var(--line);margin-top:20px;padding-top:16px}.block b{display:block;margin-bottom:6px}.muted{color:#6f6965;line-height:1.5}
+.registry{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px;margin-top:32px}
+.darkbox{background:var(--purple);color:white;border-radius:12px;padding:28px}.darkbox h3{font-size:34px;margin:0 0 15px}
+.regflow{display:flex;flex-direction:column;gap:10px}
+.regitem{display:flex;gap:12px;background:white;border:1px solid var(--line);padding:14px;border-radius:10px}
+.num{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:var(--black);font-weight:900;flex:0 0 auto}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.card{border:1px solid var(--line);border-top:6px solid var(--teal);padding:24px;background:white;border-radius:10px}
+.card:nth-child(2){border-top-color:var(--green)}.card:nth-child(3){border-top-color:var(--purple)}
+.card h3{margin:0 0 10px;color:var(--black)}.card p{color:#6b6662;line-height:1.55}
+.money{font-size:23px;font-weight:900;color:var(--black);margin-top:20px}
+footer{background:var(--black);color:white;padding:38px 0;border-top:8px solid var(--green)}
+.footerin{display:flex;justify-content:space-between;align-items:center;gap:24px}.footerin img{height:54px}
 @media(max-width:900px){
-  .grid3,.flow,.statrow,.demo,.registry,.cols2,.universe-shell{grid-template-columns:1fr}
-  .flow{grid-template-columns:repeat(2,1fr)}
-  .universe{min-height:520px}.universe svg{height:520px}
-  .navlinks{display:none}
+ .navlinks{display:none}.stats,.grid3,.demo,.registry,.universe-shell{grid-template-columns:1fr}
+ .flow{grid-template-columns:repeat(2,1fr)}.universe{min-height:520px}.universe svg{height:520px}
 }
-@media(max-width:560px){
-  .hero{padding-top:72px}
-  .flow{grid-template-columns:1fr}
-  .wrap{width:min(100% - 22px,1160px)}
-}
+@media(max-width:560px){.flow,.stats{grid-template-columns:1fr}.hero{padding-top:68px}.footerin{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
-<nav>
-  <div class="wrap navin">
-    <div class="brand"><div class="mark">MS</div><span>Mobility Safety Network</span></div>
-    <div class="navlinks"><a href="#how">How it works</a><a href="#universe">Business universe</a><a href="#registry">Safety register</a></div>
-    <a class="btn" href="#contact">Explore the idea</a>
+<nav><div class="wrap navin">
+  <img class="logo" src="verra-logo.png" alt="Verra Mobility">
+  <div class="navlinks"><a href="#concept">Concept</a><a href="#response">Live response</a><a href="#universe">Business model</a><a href="#register">Safety register</a></div>
+  <a class="pill" href="#proposal">Internal proposal</a>
+</div></nav>
+
+<header class="hero" id="proposal"><div class="wrap">
+ <div class="kicker">Proposal to Verra Mobility</div>
+ <h1>Safer journeys.<br><span>Stronger mobility.</span></h1>
+ <p>A concept for a 24/7 Safety Operations Network connecting people, platforms, emergency services, insurers and governments when it matters most.</p>
+ <div class="actions"><a class="btn primary" href="#concept">Explore the concept →</a><a class="btn secondary" href="#universe">Explore the business model</a></div>
+ <div class="stats">
+  <div class="stat"><strong>Protect people</strong><span>Intervene sooner. Reduce harm.</span></div>
+  <div class="stat"><strong>Connect ecosystems</strong><span>One network. Many stakeholders.</span></div>
+  <div class="stat"><strong>Reduce risk</strong><span>Better intelligence. Better response.</span></div>
+ </div>
+</div></header>
+
+<section id="concept"><div class="wrap">
+ <div class="eyebrow">The opportunity</div>
+ <h2>The safety challenge isn't detection. It's connection.</h2>
+ <p class="lead">A single mobility incident can involve the driver, rider, app, customer support, internal safety, insurance, emergency services and regulators. The opportunity is to connect that entire lifecycle through one human-led safety operating layer.</p>
+ <div class="flow">
+  <div class="step"><b>01</b><strong>Detect</strong></div><div class="step"><b>02</b><strong>Assess</strong></div><div class="step"><b>03</b><strong>Intervene</strong></div>
+  <div class="step"><b>04</b><strong>Respond</strong></div><div class="step"><b>05</b><strong>Investigate</strong></div><div class="step"><b>06</b><strong>Learn</strong></div>
+ </div>
+</div></section>
+
+<section class="alt" id="response"><div class="wrap">
+ <div class="eyebrow">Live response concept</div>
+ <h2>Sometimes nobody can press SOS.</h2>
+ <p class="lead">AI can identify potential distress indicators for human assessment — while discreet signals can give drivers another way to ask for help.</p>
+ <div class="demo">
+  <div class="panel">
+   <span class="tag">SIMULATED JOURNEY</span>
+   <div class="row"><div class="time">12:43:17</div><div class="warn">Raised voices detected</div></div>
+   <div class="row"><div class="time">12:43:22</div><div class="warn">Behavioural risk indicator</div></div>
+   <div class="row"><div class="time">12:43:26</div><div class="crit">Driver distress gesture recognised</div></div>
+   <div class="row"><div class="time">12:43:27</div><div class="crit">Safety response activated</div></div>
+   <div class="row"><div class="time">12:43:39</div><div>Human operator assessing</div></div>
+   <div class="row"><div class="time">12:43:51</div><div class="ok">Driver assistance initiated</div></div>
   </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="kicker">Concept / Safety Operations as a Service</div>
-    <h1>Safety shouldn't stop at the app.</h1>
-    <p>A shared safety infrastructure for people on the move — connecting journeys, mobility platforms, responders, insurers and governments when something goes wrong.</p>
-    <div class="actions">
-      <a class="btn primary" href="#how">See how it works →</a>
-      <a class="btn" href="#universe">Explore the business model</a>
-    </div>
-    <div class="statrow">
-      <div class="stat"><strong>24/7</strong><span>Safety operations capability</span></div>
-      <div class="stat"><strong>1 network</strong><span>Across operators and stakeholders</span></div>
-      <div class="stat"><strong>Human-led</strong><span>AI detects. People decide.</span></div>
-    </div>
+  <div class="panel">
+   <span class="tag">RESPONSE PERFORMANCE</span><div class="big">24 sec</div>
+   <h3>Silent signal to human response.</h3>
+   <p class="muted">AI detects. People decide. The operating model connects detection to intervention, incident management, evidence, escalation and learning.</p>
   </div>
-</header>
+ </div>
+</div></section>
 
-<section id="how">
-  <div class="wrap">
-    <div class="eyebrow">The problem</div>
-    <h2>The safety challenge isn't detection. It's connection.</h2>
-    <p class="lead">A single incident can involve the driver, rider, app, support team, safety team, insurer, emergency services and regulator. The hard part is connecting them quickly, consistently and with the right evidence.</p>
+<section id="universe"><div class="wrap">
+ <div class="eyebrow">Business model universe</div>
+ <h2>Who benefits, who pays, and what would Verra need to build?</h2>
+ <p class="lead">Move the ecosystem around. Select a node to explore its role, potential commercial value and enabling requirements.</p>
+ <div class="filters">
+  <button class="chip active" data-filter="all">All</button><button class="chip" data-filter="revenue">💰 Money</button>
+  <button class="chip" data-filter="partner">🤝 Partners</button><button class="chip" data-filter="capability">⚙ Build</button>
+  <button class="chip" data-filter="risk">⚠ Risks</button><button class="chip" data-filter="stakeholder">🏛 Government</button>
+ </div>
+ <div class="universe-shell">
+  <div class="universe"><svg id="universeSvg" viewBox="0 0 840 620"><g id="links"></g><g id="nodes"></g></svg></div>
+  <aside class="detail">
+   <div class="type" id="detailType">Core business</div><h3 id="detailTitle">Safety Operations Network</h3>
+   <div class="block"><b>Why it matters</b><div id="detailValue" class="muted"></div></div>
+   <div class="block"><b>Potential money</b><div id="detailMoney" class="muted"></div></div>
+   <div class="block"><b>What Verra would need</b><div id="detailNeeds" class="muted"></div></div>
+  </aside>
+ </div>
+</div></section>
 
-    <div class="flow">
-      <div class="step"><b>01</b><strong>Detect</strong></div>
-      <div class="step"><b>02</b><strong>Assess</strong></div>
-      <div class="step"><b>03</b><strong>Intervene</strong></div>
-      <div class="step"><b>04</b><strong>Respond</strong></div>
-      <div class="step"><b>05</b><strong>Investigate</strong></div>
-      <div class="step"><b>06</b><strong>Learn</strong></div>
-    </div>
-
-    <div class="demo">
-      <div class="timeline">
-        <span class="badge">SIMULATED LIVE JOURNEY</span>
-        <div class="timeline-row"><div class="time">12:43:17</div><div class="event alert">Raised voices detected</div></div>
-        <div class="timeline-row"><div class="time">12:43:22</div><div class="event alert">Behavioural risk indicator</div></div>
-        <div class="timeline-row"><div class="time">12:43:26</div><div class="event critical">Driver distress gesture recognised</div></div>
-        <div class="timeline-row"><div class="time">12:43:27</div><div class="event critical">Safety response activated</div></div>
-        <div class="timeline-row"><div class="time">12:43:39</div><div class="event">Human operator assessing</div></div>
-        <div class="timeline-row"><div class="time">12:43:51</div><div class="event good">Driver assistance initiated</div></div>
-      </div>
-      <div class="incident">
-        <span class="badge">RESPONSE PERFORMANCE</span>
-        <div class="bigtime">24 sec</div>
-        <h3>From silent distress signal to human response.</h3>
-        <p class="lead" style="font-size:16px">AI can surface possible risk indicators — yelling, unusual behaviour, route anomalies or a predefined hand signal. A trained person assesses what happens next.</p>
-      </div>
-    </div>
+<section class="alt" id="register"><div class="wrap">
+ <div class="eyebrow">Industry safety intelligence</div>
+ <h2>A serious safety risk shouldn't disappear because someone changes platforms.</h2>
+ <div class="registry">
+  <div class="darkbox"><h3>Industry Safety Register</h3><p>Explore a tightly governed, central safety intelligence capability for substantiated serious events or exclusions — accessible only to authorised platforms and relevant government bodies.</p><p><strong>Not a blacklist.</strong> Identity verification, defined evidence thresholds, appeals, privacy, access controls and independent oversight would be fundamental.</p></div>
+  <div class="regflow">
+   <div class="regitem"><div class="num">1</div><div><strong>Serious event investigated</strong><div class="muted">Evidence gathered by the platform.</div></div></div>
+   <div class="regitem"><div class="num">2</div><div><strong>Threshold verified</strong><div class="muted">Defined serious-safety criteria are met.</div></div></div>
+   <div class="regitem"><div class="num">3</div><div><strong>Independent review</strong><div class="muted">Identity, evidence, fairness and proportionality checked.</div></div></div>
+   <div class="regitem"><div class="num">4</div><div><strong>Controlled record</strong><div class="muted">Strictly limited, auditable access.</div></div></div>
+   <div class="regitem"><div class="num">5</div><div><strong>Cross-platform check</strong><div class="muted">Authorised operators can identify verified serious safety concerns.</div></div></div>
   </div>
-</section>
+ </div>
+</div></section>
 
-<section id="universe">
-  <div class="wrap">
-    <div class="eyebrow">Business model universe</div>
-    <h2>Move around the ecosystem.</h2>
-    <p class="lead">Drag the nodes. Click anything to see whether it is a payer, partner, capability, stakeholder, beneficiary or risk.</p>
-    <div class="filters">
-      <button class="chip active" data-filter="all">All</button>
-      <button class="chip" data-filter="revenue">💰 Money</button>
-      <button class="chip" data-filter="partner">🤝 Partners</button>
-      <button class="chip" data-filter="capability">⚙️ Build</button>
-      <button class="chip" data-filter="risk">⚠️ Risks</button>
-      <button class="chip" data-filter="stakeholder">🏛 Government</button>
-    </div>
+<section><div class="wrap">
+ <div class="eyebrow">Commercial pathways</div><h2>One network. Multiple potential customers.</h2>
+ <div class="grid3">
+  <div class="card"><h3>Mobility operators</h3><p>24/7 safety capability without building a dedicated internal control centre.</p><div class="money">Managed service</div></div>
+  <div class="card"><h3>Government & regulators</h3><p>Industry assurance, systemic-risk intelligence and greater visibility of operator performance.</p><div class="money">Assurance & intelligence</div></div>
+  <div class="card"><h3>Insurers</h3><p>Earlier intervention, better evidence, stronger claims information and preventative risk intelligence.</p><div class="money">Risk services</div></div>
+ </div>
+</div></section>
 
-    <div class="universe-shell">
-      <div class="universe">
-        <svg id="universeSvg" viewBox="0 0 840 620" aria-label="Interactive business universe">
-          <g id="links"></g>
-          <g id="nodes"></g>
-        </svg>
-      </div>
-      <aside class="side">
-        <div class="label">Selected node</div>
-        <h3 id="detailTitle">Safety Operations Network</h3>
-        <div id="detailType" class="meta">Core business</div>
-        <div class="sideblock"><b>Why it matters</b><div id="detailValue" class="meta"></div></div>
-        <div class="sideblock"><b>Potential money</b><div id="detailMoney" class="meta"></div></div>
-        <div class="sideblock"><b>What we need</b><div id="detailNeeds" class="meta"></div></div>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<section id="registry">
-  <div class="wrap">
-    <div class="eyebrow">Cross-platform safety intelligence</div>
-    <h2>A serious safety risk shouldn't disappear just because someone changes apps.</h2>
-    <div class="registry">
-      <div class="regbox">
-        <div class="quote">An independently governed Industry Safety Register.</div>
-        <p class="lead" style="font-size:16px;margin-top:18px">Not a blacklist. A tightly controlled framework for substantiated serious safety events or exclusions, with verified identity, evidence thresholds, appeals, access controls and regulator oversight.</p>
-      </div>
-      <div class="regbox reg-flow">
-        <div class="reg-item"><div class="num">1</div><div><strong>Serious event occurs</strong><div class="meta">Platform investigation and evidence collection.</div></div></div>
-        <div class="reg-item"><div class="num">2</div><div><strong>Threshold met</strong><div class="meta">Defined criteria for substantiated serious safety risk.</div></div></div>
-        <div class="reg-item"><div class="num">3</div><div><strong>Independent review</strong><div class="meta">Identity, fairness, evidence and proportionality checked.</div></div></div>
-        <div class="reg-item"><div class="num">4</div><div><strong>Authorised record</strong><div class="meta">Controlled access for participating platforms and regulators.</div></div></div>
-        <div class="reg-item"><div class="num">5</div><div><strong>Eligibility check</strong><div class="meta">A new platform can identify verified serious safety concerns before onboarding.</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="eyebrow">Who could pay?</div>
-    <h2>One network. Multiple commercial paths.</h2>
-    <div class="grid3">
-      <div class="card"><h3>Mobility operators</h3><p>24/7 Safety Operations without building an internal control centre.</p><div class="money">Managed service</div><div class="price">Platform + driver / journey / event pricing</div></div>
-      <div class="card"><h3>Governments & regulators</h3><p>Industry assurance, systemic risk visibility and independent oversight.</p><div class="money">Assurance contracts</div><div class="price">Government-funded or industry-funded models</div></div>
-      <div class="card"><h3>Insurers</h3><p>Earlier intervention, stronger evidence, improved claims data and prevention.</p><div class="money">Risk services</div><div class="price">Referral, subsidy, analytics or integration</div></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="eyebrow">Why now?</div>
-    <h2>The technology exists. The operating layer is fragmented.</h2>
-    <div class="cols2">
-      <div class="card"><h3>Already possible</h3><p>GPS, telematics, dashcams, anomaly detection, AI audio/vision analysis, digital incident management, automated escalation and real-time analytics.</p></div>
-      <div class="card"><h3>Still missing</h3><p>A shared human-led safety operating model that connects the technology to response, investigation, insurance, governance and regulatory assurance.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <div class="eyebrow">Working concept</div>
-    <h2>What if safety became shared infrastructure?</h2>
-    <p class="lead">Built from real-world mobility safety experience and a simple question: was connecting all these pieces difficult in one company — or is it an industry problem?</p>
-    <div class="actions"><a class="btn primary" href="#universe">Explore the universe again ↑</a></div>
-  </div>
-</section>
-
-<footer><div class="wrap">Concept website • Mobility Safety Network • Placeholder brand for discussion</div></footer>
+<footer><div class="wrap footerin"><img src="verra-logo.png" alt="Verra Mobility"><div>Mobility Safety Network • Internal concept proposal</div></div></footer>
 
 <script>
-(() => {
- const data = [
- {id:'core',label:'Safety Ops',sub:'Core network',type:'core',x:420,y:305,r:58,value:'The connective layer between journeys, operators, responders, insurers and regulators.',money:'Recurring managed-service and platform revenue.',needs:'24/7 operations, integrations, trained responders, governance and assurance.'},
- {id:'operators',label:'Operators',sub:'Rideshare • taxi',type:'revenue',x:190,y:130,r:44,value:'Primary customers needing safety capability without building a control centre.',money:'High: platform, per-driver, per-journey or managed-service fees.',needs:'Sales model, onboarding, SLAs and integrations.'},
- {id:'government',label:'Government',sub:'Regulators',type:'stakeholder',x:650,y:115,r:43,value:'Potential buyer of assurance and systemic-risk intelligence.',money:'Potentially high: public contracts, licensing or industry-funded assurance.',needs:'Credibility, independence, privacy framework and regulator buy-in.'},
- {id:'insurers',label:'Insurers',sub:'Claims • risk',type:'revenue',x:690,y:330,r:40,value:'Benefit from faster intervention, evidence and loss prevention.',money:'Medium-high: subsidy, referral, analytics or integration revenue.',needs:'Claims integration and measurable risk-reduction evidence.'},
- {id:'telematics',label:'Telematics',sub:'GPS • cameras',type:'partner',x:560,y:500,r:39,value:'Technology partners feeding vehicle and behaviour data.',money:'Indirect: partnership and distribution channel.',needs:'APIs, data standards and partner agreements.'},
- {id:'responders',label:'First responders',sub:'Police • ambulance',type:'partner',x:300,y:505,r:39,value:'Response partners who need context and accurate location.',money:'Usually not a payer.',needs:'Escalation protocols and jurisdiction mapping.'},
- {id:'drivers',label:'Drivers',sub:'Protected users',type:'beneficiary',x:90,y:290,r:36,value:'Protected users and source of alerts or silent distress signals.',money:'Beneficiary rather than payer.',needs:'Trust, privacy and simple SOS pathways.'},
- {id:'riders',label:'Riders',sub:'Passengers',type:'beneficiary',x:110,y:440,r:35,value:'Protected customers who may also trigger or be subject to interventions.',money:'Beneficiary rather than payer.',needs:'Fair incident handling and transparent consent.'},
- {id:'ai',label:'AI detection',sub:'Audio • gesture',type:'capability',x:410,y:75,r:39,value:'Proactive detection of distress indicators and anomalies.',money:'Differentiator that increases value.',needs:'Accuracy, human review, consent and bias controls.'},
- {id:'incident',label:'Incident system',sub:'Cases • evidence',type:'capability',x:460,y:555,r:39,value:'Structured case, evidence, investigation and actions.',money:'Core enterprise feature.',needs:'Workflow, evidence storage, audit trail and reporting.'},
- {id:'register',label:'Safety register',sub:'Cross-platform',type:'capability',x:770,y:490,r:42,value:'A governed cross-platform register for substantiated serious safety risks.',money:'Potentially high: access, assurance or government-funded model.',needs:'Identity verification, due process, appeals, privacy and oversight.'},
- {id:'privacy',label:'Privacy',sub:'Consent • data',type:'risk',x:810,y:220,r:34,value:'Audio, video and behavioural monitoring create major obligations.',money:'Not revenue; adoption gate.',needs:'Privacy-by-design, data minimisation and jurisdiction review.'},
- {id:'internal',label:'Internal teams',sub:'Safety • policy',type:'stakeholder',x:230,y:265,r:38,value:'Safety, support, legal, policy, insurance and operations teams.',money:'Influence enterprise buying decisions.',needs:'Role clarity and shared workflows.'}
- ];
- const edges=[['core','operators'],['core','government'],['core','insurers'],['core','telematics'],['core','responders'],['core','drivers'],['core','riders'],['core','ai'],['core','incident'],['core','register'],['core','privacy'],['core','internal'],['operators','internal'],['operators','drivers'],['operators','riders'],['operators','government'],['operators','insurers'],['telematics','ai'],['incident','register'],['register','government'],['register','operators'],['privacy','register'],['privacy','ai']];
- const svg=document.getElementById('universeSvg'), nlayer=document.getElementById('nodes'), llayer=document.getElementById('links');
- const fills={core:'#1c2a26',revenue:'#20352e',partner:'#1f2f35',capability:'#2d321f',risk:'#382522',stakeholder:'#252c38',beneficiary:'#191f1d'};
- let selected='core',filter='all';
- const lineEls=edges.map(([a,b])=>{const l=document.createElementNS('http://www.w3.org/2000/svg','line');l.classList.add('u-line');l.dataset.a=a;l.dataset.b=b;llayer.appendChild(l);return l});
- const nodeEls=new Map();
- data.forEach(n=>{
-   const g=document.createElementNS('http://www.w3.org/2000/svg','g');g.classList.add('node');g.dataset.id=n.id;
-   const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('r',n.r);c.setAttribute('fill',fills[n.type]||'#191f1d');
-   const t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('text-anchor','middle');t.setAttribute('y','-2');t.textContent=n.label;
-   const s=document.createElementNS('http://www.w3.org/2000/svg','text');s.setAttribute('text-anchor','middle');s.setAttribute('y','14');s.setAttribute('class','sub');s.textContent=n.sub;
-   g.append(c,t,s);nlayer.appendChild(g);nodeEls.set(n.id,g);
-   g.addEventListener('click',()=>{selected=n.id;detail();view()});
-   let drag=false,pid;
-   g.addEventListener('pointerdown',e=>{drag=true;pid=e.pointerId;g.setPointerCapture(pid)});
-   g.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==pid)return;const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const loc=pt.matrixTransform(svg.getScreenCTM().inverse());n.x=Math.max(n.r,Math.min(840-n.r,loc.x));n.y=Math.max(n.r,Math.min(620-n.r,loc.y));render()});
-   g.addEventListener('pointerup',e=>{if(e.pointerId===pid)drag=false});
- });
- function render(){data.forEach(n=>nodeEls.get(n.id).setAttribute('transform',`translate(${n.x},${n.y})`));lineEls.forEach(l=>{const a=data.find(x=>x.id===l.dataset.a),b=data.find(x=>x.id===l.dataset.b);l.setAttribute('x1',a.x);l.setAttribute('y1',a.y);l.setAttribute('x2',b.x);l.setAttribute('y2',b.y)})}
- function detail(){const n=data.find(x=>x.id===selected);detailTitle.textContent=n.label;detailType.textContent=({core:'Core business',revenue:'Revenue opportunity',partner:'Partner',capability:'Capability to build',risk:'Risk / constraint',stakeholder:'Stakeholder',beneficiary:'Beneficiary'})[n.type]||n.type;detailValue.textContent=n.value;detailMoney.textContent=n.money;detailNeeds.textContent=n.needs}
- function view(){const connected=new Set([selected]);edges.forEach(([a,b])=>{if(a===selected)connected.add(b);if(b===selected)connected.add(a)});data.forEach(n=>{const el=nodeEls.get(n.id),show=filter==='all'||n.type===filter||n.id==='core';el.style.display=show?'':'none';el.classList.toggle('selected',n.id===selected);el.style.opacity=connected.has(n.id)?'1':'.22'});lineEls.forEach(l=>{const a=data.find(x=>x.id===l.dataset.a),b=data.find(x=>x.id===l.dataset.b);const show=filter==='all'||a.type===filter||b.type===filter||a.id==='core'||b.id==='core';l.style.display=show?'':'none';l.classList.toggle('active',l.dataset.a===selected||l.dataset.b===selected);l.style.opacity=(l.dataset.a===selected||l.dataset.b===selected)?'1':'.15'})}
- document.querySelectorAll('.chip').forEach(ch=>ch.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));ch.classList.add('active');filter=ch.dataset.filter;view()}));
- render();detail();view();
+(()=>{
+const data=[
+{id:'core',label:'Safety Ops',sub:'Core network',type:'core',x:420,y:305,r:58,value:'The operating layer connecting journeys, platforms, responders, insurers and regulators.',money:'Managed-service and technology revenue.',needs:'24/7 operating model, integrations, trained responders, governance and assurance.'},
+{id:'operators',label:'Operators',sub:'Rideshare • taxi',type:'revenue',x:185,y:125,r:44,value:'Primary customer segment needing scalable safety operations.',money:'High — platform, per-driver, per-journey or managed-service pricing.',needs:'Customer proposition, SLAs, onboarding and integrations.'},
+{id:'government',label:'Government',sub:'Regulators',type:'stakeholder',x:650,y:115,r:43,value:'Potential customer for industry assurance and systemic-risk intelligence.',money:'Potentially high — public contracts or industry-funded assurance.',needs:'Regulatory credibility, independence and privacy framework.'},
+{id:'insurers',label:'Insurers',sub:'Claims • risk',type:'revenue',x:690,y:330,r:40,value:'Faster intervention and stronger evidence may reduce loss and improve claims.',money:'Medium-high — subsidy, analytics, referral or integration.',needs:'Insurer partnerships and evidence of risk reduction.'},
+{id:'telematics',label:'Telematics',sub:'GPS • cameras',type:'partner',x:555,y:500,r:39,value:'Technology partners feeding vehicle and behavioural data.',money:'Indirect — integration and distribution value.',needs:'APIs, data standards and partnerships.'},
+{id:'responders',label:'Responders',sub:'Police • ambulance',type:'partner',x:295,y:505,r:39,value:'Emergency response partners requiring accurate context and location.',money:'Usually not a payer.',needs:'Escalation protocols and jurisdiction mapping.'},
+{id:'drivers',label:'Drivers',sub:'Protected users',type:'beneficiary',x:90,y:290,r:36,value:'Protected users and a source of alerts or silent distress signals.',money:'Beneficiary rather than payer.',needs:'Trust, privacy and simple safety pathways.'},
+{id:'riders',label:'Riders',sub:'Passengers',type:'beneficiary',x:110,y:440,r:35,value:'Protected customers who may also trigger or be subject to interventions.',money:'Beneficiary rather than payer.',needs:'Fair handling, transparency and consent.'},
+{id:'ai',label:'AI Detection',sub:'Audio • gesture',type:'capability',x:410,y:75,r:39,value:'Proactive detection of potential distress indicators and anomalies.',money:'Differentiating capability.',needs:'Accuracy, human review, consent, testing and bias controls.'},
+{id:'incident',label:'Incident System',sub:'Cases • evidence',type:'capability',x:455,y:555,r:39,value:'Case management from event through investigation and closure.',money:'Core enterprise feature.',needs:'Workflow, evidence, audit trail and analytics.'},
+{id:'register',label:'Safety Register',sub:'Cross-platform',type:'capability',x:770,y:490,r:42,value:'Governed cross-platform intelligence for substantiated serious safety risks.',money:'Potentially high — access, assurance or government-funded model.',needs:'Identity verification, due process, appeals, privacy and oversight.'},
+{id:'privacy',label:'Privacy',sub:'Consent • data',type:'risk',x:810,y:220,r:34,value:'Monitoring and data sharing create material privacy obligations.',money:'Not revenue — a critical adoption gate.',needs:'Privacy-by-design, minimisation and jurisdiction review.'},
+{id:'internal',label:'Internal Teams',sub:'Safety • policy',type:'stakeholder',x:230,y:265,r:38,value:'Safety, support, legal, insurance, policy and operations functions.',money:'Key internal users and sponsors.',needs:'Clear roles, workflows and escalation matrices.'}
+];
+const edges=[['core','operators'],['core','government'],['core','insurers'],['core','telematics'],['core','responders'],['core','drivers'],['core','riders'],['core','ai'],['core','incident'],['core','register'],['core','privacy'],['core','internal'],['operators','internal'],['operators','drivers'],['operators','riders'],['operators','government'],['operators','insurers'],['telematics','ai'],['incident','register'],['register','government'],['register','operators'],['privacy','register'],['privacy','ai']];
+const fills={core:'#1D8296',revenue:'#464E7E',partner:'#857874',capability:'#A9C23F',risk:'#6e4a46',stakeholder:'#3D3935',beneficiary:'#5c777c'};
+const svg=document.getElementById('universeSvg'),nl=document.getElementById('nodes'),ll=document.getElementById('links');
+let selected='core',filter='all'; const ne=new Map();
+const le=edges.map(([a,b])=>{const l=document.createElementNS('http://www.w3.org/2000/svg','line');l.classList.add('u-line');l.dataset.a=a;l.dataset.b=b;ll.appendChild(l);return l});
+data.forEach(n=>{const g=document.createElementNS('http://www.w3.org/2000/svg','g');g.classList.add('node');g.dataset.id=n.id;
+const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('r',n.r);c.setAttribute('fill',fills[n.type]||'#857874');
+const t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('text-anchor','middle');t.setAttribute('y','-2');t.textContent=n.label;
+const s=document.createElementNS('http://www.w3.org/2000/svg','text');s.setAttribute('text-anchor','middle');s.setAttribute('y','14');s.setAttribute('class','sub');s.textContent=n.sub;g.append(c,t,s);nl.appendChild(g);ne.set(n.id,g);
+g.addEventListener('click',()=>{selected=n.id;details();view()});let drag=false,pid;
+g.addEventListener('pointerdown',e=>{drag=true;pid=e.pointerId;g.setPointerCapture(pid)});
+g.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==pid)return;const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;const q=p.matrixTransform(svg.getScreenCTM().inverse());n.x=Math.max(n.r,Math.min(840-n.r,q.x));n.y=Math.max(n.r,Math.min(620-n.r,q.y));render()});
+g.addEventListener('pointerup',e=>{if(e.pointerId===pid)drag=false})});
+function render(){data.forEach(n=>ne.get(n.id).setAttribute('transform',`translate(${n.x},${n.y})`));le.forEach(l=>{const a=data.find(x=>x.id===l.dataset.a),b=data.find(x=>x.id===l.dataset.b);l.setAttribute('x1',a.x);l.setAttribute('y1',a.y);l.setAttribute('x2',b.x);l.setAttribute('y2',b.y)})}
+function details(){const n=data.find(x=>x.id===selected);detailTitle.textContent=n.label;detailType.textContent=({core:'Core business',revenue:'Revenue opportunity',partner:'Partner',capability:'Capability to build',risk:'Risk / constraint',stakeholder:'Stakeholder',beneficiary:'Beneficiary'})[n.type]||n.type;detailValue.textContent=n.value;detailMoney.textContent=n.money;detailNeeds.textContent=n.needs}
+function view(){const con=new Set([selected]);edges.forEach(([a,b])=>{if(a===selected)con.add(b);if(b===selected)con.add(a)});data.forEach(n=>{const e=ne.get(n.id),show=filter==='all'||n.type===filter||n.id==='core';e.style.display=show?'':'none';e.classList.toggle('selected',n.id===selected);e.style.opacity=con.has(n.id)?'1':'.2'});le.forEach(l=>{const a=data.find(x=>x.id===l.dataset.a),b=data.find(x=>x.id===l.dataset.b),show=filter==='all'||a.type===filter||b.type===filter||a.id==='core'||b.id==='core';l.style.display=show?'':'none';const on=l.dataset.a===selected||l.dataset.b===selected;l.classList.toggle('active',on);l.style.opacity=on?'1':'.12'})}
+document.querySelectorAll('.chip').forEach(ch=>ch.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));ch.classList.add('active');filter=ch.dataset.filter;view()}));
+render();details();view();
 })();
 </script>
 </body>
