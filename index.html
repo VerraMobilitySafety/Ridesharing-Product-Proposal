@@ -504,6 +504,11 @@ h2{
 .bring-together{margin-top:20px;border:0;border-radius:999px;background:#A9C23F;color:#3D3935;padding:14px 20px;font-weight:800;cursor:pointer;align-self:flex-start}.bring-together:hover{filter:brightness(1.05)}
 .verra-explorer.combined .verra-node{border-color:#A9C23F;background:rgba(29,130,150,.22)}.verra-explorer.combined .verra-core{transform:scale(1.08);box-shadow:0 0 0 22px rgba(169,194,63,.08),0 18px 55px rgba(0,0,0,.3)}.verra-explorer.combined .verra-line{opacity:1;height:2px}
 .verra-finale{text-align:center;margin-top:58px;padding-top:44px;border-top:1px solid rgba(255,255,255,.13)}.verra-finale strong{display:block;font-size:clamp(30px,4vw,58px);line-height:1.05}.verra-finale span{display:block;margin-top:10px;font-size:clamp(22px,3vw,40px);color:#A9C23F;font-weight:800}
+.explore-test{margin-top:54px;padding:34px;border:1px solid rgba(255,255,255,.13);border-radius:26px;background:rgba(255,255,255,.055)}
+.explore-test-head{display:flex;justify-content:space-between;gap:28px;align-items:end;margin-bottom:24px}.explore-test-head h3{margin:0;font-size:clamp(26px,3vw,40px);letter-spacing:-.03em}.explore-test-head p{margin:0;max-width:620px;color:rgba(255,255,255,.68);line-height:1.6}
+.explore-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.explore-step{position:relative;overflow:hidden;padding:22px 20px 20px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);transition:.25s ease}.explore-step:before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:#1D8296}.explore-step:nth-child(2):before{background:#A9C23F}.explore-step:nth-child(3):before{background:#464E7E}.explore-step:nth-child(4):before{background:#857874}.explore-step:hover{transform:translateY(-4px);background:rgba(255,255,255,.09)}.explore-step span{display:block;font-size:12px;font-weight:900;letter-spacing:.12em;color:#A9C23F;margin-bottom:12px}.explore-step strong{display:block;font-size:19px;margin-bottom:8px}.explore-step p{margin:0;color:rgba(255,255,255,.66);line-height:1.55;font-size:14px}
+@media(max-width:900px){.explore-test-head{display:block}.explore-test-head p{margin-top:10px}.explore-steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.explore-test{padding:24px 18px}.explore-steps{grid-template-columns:1fr}}
 @media(max-width:900px){.verra-explorer{grid-template-columns:1fr}.verra-wheel{min-height:520px}.verra-node{width:140px}.verra-node.n2{right:2%}.verra-node.n4{left:2%}}
 @media(max-width:560px){.verra-wheel{min-height:600px}.verra-ring{width:310px;height:310px}.verra-ring.r2{width:240px;height:240px}.verra-core{width:150px;height:150px}.verra-node{width:135px}.verra-node.n1{top:5px}.verra-node.n2{right:0;top:215px}.verra-node.n3{bottom:5px}.verra-node.n4{left:0;top:215px}.verra-line{display:none}}
 
@@ -534,8 +539,8 @@ footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--
 <body>
 <nav><div class="wrap navin">
   <img class="logo" src="verra-logo.png" alt="Verra Mobility">
-  <div class="navlinks"><a href="#problem">Problem</a><a href="#concept">Opportunity</a><a href="#response">Live response</a><a href="#universe">Business model</a><a href="#register">Safety register</a></div>
-  <a class="pill" href="#proposal">Internal proposal</a>
+  <div class="navlinks"><a href="#problem">Problem</a><a href="#concept">Opportunity</a><a href="#response">Solutions</a><a href="#universe">Business model</a><a href="#why-verra">Why Verra</a></div>
+  <a class="pill" href="#proposal">Concept proposal</a>
 </div></nav>
 
 <header class="hero" id="proposal">
@@ -583,7 +588,7 @@ footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--
     <div class="problem-pill"><i></i><div><strong>Data speaks different languages</strong><span>Different taxonomies, severity models and reporting structures make industry-level comparison difficult.</span></div></div>
     <div class="problem-pill"><i></i><div><strong>Intelligence stays in silos</strong><span>Patterns, lessons and substantiated serious-risk information do not easily move across platforms.</span></div></div>
    </div>
-   <div class="problem-footer">The opportunity is to connect detection, people, response, management and intelligence through one shared safety operating layer.</div>
+   <div class="problem-footer">The opportunity is to connect detection, deterrence, assistance, response, management and intelligence through one shared safety operating layer.</div>
   </div>
   <div class="fragmented-wrap" aria-label="Illustration showing fragmented mobility safety systems">
    <div class="fragmented-label">Current state • fragmented</div>
@@ -609,14 +614,14 @@ footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--
    <article class="pressure-card employment">
     <div class="pressure-top"><span class="pressure-tag">Workforce model pressure</span><span class="pressure-icon">↔</span></div>
     <h4>Employment status is under growing scrutiny.</h4>
-    <p>Platform-worker classification continues to face legal and regulatory pressure. In the EU, employment status must be assessed from the reality of how work is performed, with a rebuttable presumption of employment where facts indicate direction and control.</p>
+    <p>Platform-worker classification continues to face legal and regulatory pressure. In the EU, employment status is increasingly assessed against how work is actually directed and controlled.</p>
     <div class="pressure-why"><strong>Why it matters:</strong> shared safety capability can reduce duplicated operational infrastructure without pretending to remove each platform's own legal responsibilities or employment-status obligations.</div>
     <div class="pressure-source">Source: <a href="https://eur-lex.europa.eu/eli/dir/2024/2831/oj" target="_blank" rel="noopener">EU Platform Work Directive 2024/2831</a></div>
    </article>
    <article class="pressure-card automation">
     <div class="pressure-top"><span class="pressure-tag">Automation and human oversight</span><span class="pressure-icon">AI</span></div>
     <h4>Automation needs meaningful human judgement.</h4>
-    <p>In August 2026, the Dutch Data Protection Authority fined Uber €824.99 million over automated individual decisions affecting drivers. The case reinforces the need for transparency, governance and meaningful human involvement in consequential decisions.</p>
+    <p>In August 2026, the Dutch Data Protection Authority fined Uber €824.99 million over automated decisions affecting drivers — reinforcing the need for transparency, governance and meaningful human involvement.</p>
     <div class="pressure-why"><strong>Why it matters:</strong> the model should use AI to detect, triage and accelerate safety response — while trained people retain appropriate oversight and decision-making.</div>
     <div class="pressure-source">Source: <a href="https://www.cnil.fr/en/automated-decisions-uber-fined-nearly-eur-825-million" target="_blank" rel="noopener">CNIL summary of Dutch DPA decision, 24 Aug 2026</a></div>
    </article>
@@ -698,7 +703,7 @@ footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--
      <div class="type" id="detailType">Core business</div>
      <h3 id="detailTitle">Safety Operations Network</h3>
      <div class="block"><b>Why it matters</b><div id="detailValue" class="muted"></div></div>
-     <div class="block"><b>Potential money</b><div id="detailMoney" class="muted"></div></div>
+     <div class="block"><b>Commercial opportunity</b><div id="detailMoney" class="muted"></div></div>
      <div class="block"><b>What Verra would need</b><div id="detailNeeds" class="muted"></div></div>
    </aside>
  </div>
@@ -736,10 +741,22 @@ footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--
    <button type="button" class="bring-together" id="bringTogether">Bring it together →</button>
   </aside>
  </div>
+ <div class="explore-test" id="explore-test">
+  <div class="explore-test-head">
+   <h3>A practical way to test the idea.</h3>
+   <p>Start small, prove the value and only scale what works. The concept can be explored without committing to a full operating model from day one.</p>
+  </div>
+  <div class="explore-steps">
+   <div class="explore-step"><span>01 — VALIDATE</span><strong>Test the need</strong><p>Speak with mobility operators, regulators and insurers to validate the problems, appetite and commercial model.</p></div>
+   <div class="explore-step"><span>02 — PROTOTYPE</span><strong>Build one capability</strong><p>Use existing Verra technology and expertise to prototype one or two high-value parts of the safety lifecycle.</p></div>
+   <div class="explore-step"><span>03 — PILOT</span><strong>Run it in the real world</strong><p>Pilot with a defined operator, geography or use case and measure response, safety outcomes and operating effort.</p></div>
+   <div class="explore-step"><span>04 — EVALUATE</span><strong>Prove the case</strong><p>Assess safety impact, cost to serve, customer demand, governance requirements and the case for scale.</p></div>
+  </div>
+ </div>
  <div class="verra-finale"><strong>We already help make roads safer.</strong><span>Could we help make every journey safer too?</span></div>
 </div></section>
 
-<footer><div class="wrap footerin"><img src="verra-logo.png" alt="Verra Mobility"><div>Mobility Safety Network • Internal concept proposal</div></div></footer>
+<footer><div class="wrap footerin"><img src="verra-logo.png" alt="Verra Mobility"><div>Mobility Safety Network • Concept proposal</div></div></footer>
 
 <script>
 (()=>{
