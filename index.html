@@ -193,6 +193,107 @@ h1 .accent{
 }
 
 @media(prefers-reduced-motion:reduce){.orbit,.hero-canvas::before{animation:none!important}}
+
+/* CURRENT PROBLEM */
+.problem-section{
+  position:relative;overflow:hidden;background:linear-gradient(180deg,#f7f8f5 0%,#fff 100%);
+  border-bottom:1px solid var(--line)
+}
+.problem-layout{display:grid;grid-template-columns:.78fr 1.22fr;gap:44px;align-items:center}
+.problem-copy h2{max-width:620px}
+.problem-copy .lead{max-width:590px}
+.problem-summary{margin-top:28px;display:grid;gap:10px}
+.problem-pill{
+  display:flex;align-items:flex-start;gap:12px;padding:13px 15px;border-radius:14px;
+  background:#fff;border:1px solid var(--line);box-shadow:0 8px 22px rgba(61,57,53,.035)
+}
+.problem-pill i{width:10px;height:10px;border-radius:50%;margin-top:6px;flex:0 0 auto;background:var(--teal)}
+.problem-pill:nth-child(2) i,.problem-pill:nth-child(5) i{background:var(--green)}
+.problem-pill:nth-child(3) i{background:var(--purple)}
+.problem-pill:nth-child(4) i{background:var(--grey)}
+.problem-pill strong{display:block;font-size:14px;color:var(--black)}
+.problem-pill span{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:#706a66}
+.fragmented-wrap{
+  position:relative;min-height:610px;border-radius:28px;overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(29,130,150,.08),transparent 31%),
+    linear-gradient(145deg,#34312f,#45413e);
+  box-shadow:0 26px 70px rgba(61,57,53,.16)
+}
+.fragmented-wrap::before{
+  content:"";position:absolute;inset:0;opacity:.18;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:38px 38px
+}
+.fragmented-label{position:absolute;left:24px;top:22px;z-index:3;font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.fragmented-note{position:absolute;right:24px;top:22px;z-index:3;font-size:11px;color:rgba(255,255,255,.52)}
+.frag-core{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;width:176px;height:176px;border-radius:50%;
+  display:grid;place-items:center;text-align:center;background:linear-gradient(145deg,var(--teal),var(--purple));
+  border:2px solid rgba(255,255,255,.2);box-shadow:0 0 0 18px rgba(29,130,150,.055),0 0 60px rgba(29,130,150,.23)
+}
+.frag-core strong{font-size:20px;line-height:1.05;color:#fff}.frag-core span{display:block;margin-top:8px;font-size:10px;line-height:1.4;color:rgba(255,255,255,.7)}
+.frag-node{
+  position:absolute;z-index:5;width:154px;min-height:88px;padding:15px 16px;border-radius:18px;background:rgba(61,57,53,.97);
+  border:1px solid rgba(255,255,255,.17);box-shadow:0 14px 34px rgba(0,0,0,.18);color:#fff;
+  animation:problemDrift var(--pd,8s) ease-in-out var(--delay,0s) infinite alternate
+}
+.frag-node::before{content:"";display:block;width:24px;height:3px;border-radius:4px;background:var(--teal);margin-bottom:10px}
+.frag-node.green::before{background:var(--green)}.frag-node.purple::before{background:var(--purple)}.frag-node.grey::before{background:var(--grey)}
+.frag-node b{display:block;font-size:13px}.frag-node span{display:block;margin-top:6px;font-size:10px;line-height:1.4;color:rgba(255,255,255,.6)}
+.frag-node.n1{left:7%;top:22%;--dx:6px;--dy:-5px;--pd:7.3s}
+.frag-node.n2{right:7%;top:18%;--dx:-6px;--dy:5px;--pd:8.1s;--delay:-2s}
+.frag-node.n3{right:4%;bottom:19%;--dx:-5px;--dy:-6px;--pd:7.6s;--delay:-4s}
+.frag-node.n4{left:8%;bottom:16%;--dx:7px;--dy:4px;--pd:8.5s;--delay:-1s}
+.frag-node.n5{left:39%;top:7%;--dx:4px;--dy:6px;--pd:7.8s;--delay:-3s}
+.frag-node.n6{left:39%;bottom:5%;--dx:-4px;--dy:-6px;--pd:8.2s;--delay:-5s}
+.frag-line{position:absolute;z-index:2;height:1px;transform-origin:left center;border-top:2px dashed rgba(255,255,255,.16)}
+.frag-line::after{content:"";position:absolute;right:-4px;top:-5px;width:8px;height:8px;border-radius:50%;background:var(--grey);opacity:.5}
+.frag-line.l1{left:20%;top:35%;width:27%;transform:rotate(18deg)}
+.frag-line.l2{left:55%;top:34%;width:26%;transform:rotate(-21deg)}
+.frag-line.l3{left:57%;top:59%;width:28%;transform:rotate(20deg)}
+.frag-line.l4{left:20%;top:65%;width:28%;transform:rotate(-19deg)}
+.frag-line.l5{left:49%;top:25%;width:15%;transform:rotate(90deg)}
+.frag-line.l6{left:49%;top:67%;width:15%;transform:rotate(90deg)}
+.frag-gap{
+  position:absolute;z-index:6;width:34px;height:24px;background:#3b3835;border-radius:999px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.05)
+}
+.frag-gap::before,.frag-gap::after{content:"";position:absolute;top:11px;width:8px;height:2px;background:var(--green);opacity:.7}
+.frag-gap::before{left:4px}.frag-gap::after{right:4px}
+.frag-gap.g1{left:34%;top:41%;transform:rotate(17deg)}.frag-gap.g2{right:30%;top:38%;transform:rotate(-20deg)}
+.frag-gap.g3{right:29%;bottom:32%;transform:rotate(19deg)}.frag-gap.g4{left:33%;bottom:30%;transform:rotate(-18deg)}
+.problem-footer{
+  margin-top:22px;padding:18px 20px;border-left:4px solid var(--green);background:rgba(169,194,63,.08);
+  font-size:17px;line-height:1.5;color:var(--black);font-weight:750
+}
+
+.problem-pressure{margin-top:40px;padding-top:32px;border-top:1px solid var(--line)}
+.pressure-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:18px}
+.pressure-head h3{margin:0;font-size:clamp(24px,3vw,36px);letter-spacing:-.03em;color:var(--black)}
+.pressure-head p{margin:0;max-width:620px;color:#706a66;font-size:14px;line-height:1.55}
+.pressure-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pressure-card{position:relative;overflow:hidden;padding:24px 24px 20px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:0 12px 34px rgba(61,57,53,.055)}
+.pressure-card::before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:var(--teal)}
+.pressure-card.employment::before{background:var(--green)}
+.pressure-card.automation::before{background:var(--purple)}
+.pressure-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}
+.pressure-tag{font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--grey)}
+.pressure-icon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:16px;font-weight:900;background:rgba(29,130,150,.08);color:var(--teal)}
+.pressure-card.employment .pressure-icon{background:rgba(169,194,63,.12);color:#6f8125}
+.pressure-card.automation .pressure-icon{background:rgba(70,78,126,.10);color:var(--purple)}
+.pressure-card h4{margin:0 0 9px;font-size:20px;letter-spacing:-.02em;color:var(--black)}
+.pressure-card>p{margin:0;color:#625d59;font-size:14px;line-height:1.58}
+.pressure-why{margin-top:16px;padding:13px 14px;border-radius:14px;background:var(--soft);font-size:12px;line-height:1.5;color:#625d59}
+.pressure-why strong{color:var(--black)}
+.pressure-source{margin-top:12px;font-size:10px;color:#8a837f}
+.pressure-source a{text-decoration:underline;text-underline-offset:2px}
+@media(max-width:760px){.pressure-grid{grid-template-columns:1fr}.pressure-head{align-items:flex-start;flex-direction:column}}
+
+@keyframes problemDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(var(--dx,4px),var(--dy,-4px),0)}}
+@media(max-width:960px){.problem-layout{grid-template-columns:1fr}.fragmented-wrap{min-height:560px}}
+@media(max-width:600px){.fragmented-wrap{min-height:600px}.frag-node{width:132px;padding:12px}.frag-node.n1{left:3%}.frag-node.n2{right:3%}.frag-node.n3{right:2%}.frag-node.n4{left:3%}.frag-node.n5{left:31%}.frag-node.n6{left:31%}.frag-core{width:145px;height:145px}.frag-core strong{font-size:17px}}
+
 /* SECTIONS */
 section{padding:94px 0}
 .eyebrow{color:var(--teal);font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}
@@ -367,7 +468,7 @@ footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--
 <body>
 <nav><div class="wrap navin">
   <img class="logo" src="verra-logo.png" alt="Verra Mobility">
-  <div class="navlinks"><a href="#concept">Concept</a><a href="#response">Live response</a><a href="#universe">Business model</a><a href="#register">Safety register</a></div>
+  <div class="navlinks"><a href="#problem">Problem</a><a href="#concept">Opportunity</a><a href="#response">Live response</a><a href="#universe">Business model</a><a href="#register">Safety register</a></div>
   <a class="pill" href="#proposal">Internal proposal</a>
 </div></nav>
 
@@ -401,6 +502,61 @@ footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--
    </div>
  </div>
 </header>
+
+
+<section class="problem-section" id="problem"><div class="wrap">
+ <div class="problem-layout">
+  <div class="problem-copy">
+   <div class="eyebrow">The current problem</div>
+   <h2>Today, safety is fragmented.</h2>
+   <p class="lead">Mobility platforms are solving many of the same safety problems independently — with different systems, definitions, teams, thresholds and response models.</p>
+   <div class="problem-summary">
+    <div class="problem-pill"><i></i><div><strong>Detection is inconsistent</strong><span>Some events are detected automatically. Others still depend on somebody being able to ask for help.</span></div></div>
+    <div class="problem-pill"><i></i><div><strong>Response capability varies</strong><span>The quality and speed of safety response can differ by operator, market, time and available resources.</span></div></div>
+    <div class="problem-pill"><i></i><div><strong>Safety infrastructure is duplicated</strong><span>Operators separately fund technology, people, processes, investigations and assurance capability.</span></div></div>
+    <div class="problem-pill"><i></i><div><strong>Data speaks different languages</strong><span>Different taxonomies, severity models and reporting structures make industry-level comparison difficult.</span></div></div>
+    <div class="problem-pill"><i></i><div><strong>Intelligence stays in silos</strong><span>Patterns, lessons and substantiated serious-risk information do not easily move across platforms.</span></div></div>
+   </div>
+   <div class="problem-footer">The opportunity is to connect detection, people, response, management and intelligence through one shared safety operating layer.</div>
+  </div>
+  <div class="fragmented-wrap" aria-label="Illustration showing fragmented mobility safety systems">
+   <div class="fragmented-label">Current state • fragmented</div>
+   <div class="fragmented-note">Similar problems • separate systems</div>
+   <div class="frag-line l1"></div><div class="frag-line l2"></div><div class="frag-line l3"></div><div class="frag-line l4"></div><div class="frag-line l5"></div><div class="frag-line l6"></div>
+   <div class="frag-gap g1"></div><div class="frag-gap g2"></div><div class="frag-gap g3"></div><div class="frag-gap g4"></div>
+   <div class="frag-core"><div><strong>ONE SAFETY<br>EVENT</strong><span>Many systems.<br>Many hand-offs.</span></div></div>
+   <div class="frag-node n1"><b>Platform support</b><span>Customer contact • escalation</span></div>
+   <div class="frag-node n2 green"><b>Safety team</b><span>Assessment • response</span></div>
+   <div class="frag-node n3 purple"><b>Insurance</b><span>Claims • evidence</span></div>
+   <div class="frag-node n4 grey"><b>Emergency services</b><span>Urgent assistance</span></div>
+   <div class="frag-node n5 green"><b>Technology</b><span>Telematics • cameras • SOS</span></div>
+   <div class="frag-node n6"><b>Government</b><span>Reporting • assurance</span></div>
+  </div>
+
+ <div class="problem-pressure">
+  <div class="pressure-head">
+   <h3>External pressure is increasing.</h3>
+   <p>The operating model is being challenged from two directions at once: how platforms manage their workforce, and how much consequential decision-making can safely be automated.</p>
+  </div>
+  <div class="pressure-grid">
+   <article class="pressure-card employment">
+    <div class="pressure-top"><span class="pressure-tag">Workforce model pressure</span><span class="pressure-icon">↔</span></div>
+    <h4>Employment status is under growing scrutiny.</h4>
+    <p>Platform-worker classification continues to face legal and regulatory pressure. In the EU, employment status must be assessed from the reality of how work is performed, with a rebuttable presumption of employment where facts indicate direction and control.</p>
+    <div class="pressure-why"><strong>Why it matters:</strong> shared safety capability can reduce duplicated operational infrastructure without pretending to remove each platform's own legal responsibilities or employment-status obligations.</div>
+    <div class="pressure-source">Source: <a href="https://eur-lex.europa.eu/eli/dir/2024/2831/oj" target="_blank" rel="noopener">EU Platform Work Directive 2024/2831</a></div>
+   </article>
+   <article class="pressure-card automation">
+    <div class="pressure-top"><span class="pressure-tag">Automation and human oversight</span><span class="pressure-icon">AI</span></div>
+    <h4>Automation needs meaningful human judgement.</h4>
+    <p>In August 2026, the Dutch Data Protection Authority fined Uber €824.99 million over automated individual decisions affecting drivers. The case reinforces the need for transparency, governance and meaningful human involvement in consequential decisions.</p>
+    <div class="pressure-why"><strong>Why it matters:</strong> the model should use AI to detect, triage and accelerate safety response — while trained people retain appropriate oversight and decision-making.</div>
+    <div class="pressure-source">Source: <a href="https://www.cnil.fr/en/automated-decisions-uber-fined-nearly-eur-825-million" target="_blank" rel="noopener">CNIL summary of Dutch DPA decision, 24 Aug 2026</a></div>
+   </article>
+  </div>
+ </div>
+ </div>
+</div></section>
 
 <section id="concept"><div class="wrap">
  <div class="eyebrow">The opportunity</div>
