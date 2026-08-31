@@ -342,6 +342,50 @@ h2{
 .opp-footer{margin-top:22px;padding-top:17px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;font-weight:800;color:var(--teal);text-transform:uppercase;letter-spacing:.07em}
 @keyframes oppIn{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:translateX(0)}}
 
+
+/* PROPOSED SOLUTIONS */
+.solutions-section{overflow:hidden}
+.solution-tabs{display:grid;grid-template-columns:repeat(7,minmax(128px,1fr));gap:9px;margin-top:36px;margin-bottom:16px}
+.solution-tab{appearance:none;min-width:0;min-height:86px;padding:14px 13px;text-align:left;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.055);color:#fff;cursor:pointer;font:inherit;transition:transform .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease}
+.solution-tab span{display:block;color:var(--green);font-size:10px;font-weight:900;letter-spacing:.12em;margin-bottom:9px}
+.solution-tab b{display:block;font-size:13px;line-height:1.18}
+.solution-tab:hover{transform:translateY(-3px);background:rgba(255,255,255,.09);border-color:rgba(169,194,63,.35)}
+.solution-tab.active{background:linear-gradient(145deg,rgba(29,130,150,.22),rgba(169,194,63,.13));border-color:rgba(169,194,63,.66);box-shadow:inset 0 3px 0 var(--green),0 16px 32px rgba(0,0,0,.12)}
+.solution-tab:focus-visible{outline:3px solid rgba(169,194,63,.35);outline-offset:3px}
+.solution-stage{display:grid;grid-template-columns:minmax(0,.88fr) minmax(420px,1.12fr);gap:20px;align-items:stretch;margin-top:14px}
+.solution-copy,.solution-visual{position:relative;border-radius:24px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.06);padding:30px;overflow:hidden}
+.solution-copy::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 0 0,rgba(169,194,63,.10),transparent 36%),radial-gradient(circle at 100% 100%,rgba(29,130,150,.12),transparent 38%);pointer-events:none}
+.solution-copy>*{position:relative;z-index:1}
+.solution-number,.visual-kicker{font-size:10px;font-weight:900;letter-spacing:.13em;color:var(--green);text-transform:uppercase}
+.solution-copy h3{font-size:clamp(31px,3.2vw,48px);line-height:1.02;letter-spacing:-.04em;margin:12px 0 15px;color:#fff;max-width:590px}
+.solution-hook{font-size:17px;line-height:1.55;color:rgba(255,255,255,.76);max-width:620px;margin:0}
+.solution-points{display:grid;gap:10px;margin-top:23px}
+.solution-point{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;padding:11px 12px;border-radius:13px;background:rgba(255,255,255,.045);color:rgba(255,255,255,.78);font-size:13px;line-height:1.42}
+.solution-point i{font-style:normal;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(169,194,63,.14);color:var(--green);font-size:11px;font-weight:900}
+.solution-outcome{margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,.11)}
+.solution-outcome span{display:block;font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:7px}
+.solution-outcome strong{font-size:14px;line-height:1.42;color:#fff}
+.solution-visual{min-height:420px;background:linear-gradient(145deg,rgba(61,57,53,.88),rgba(29,130,150,.13));display:flex;flex-direction:column;justify-content:center}
+.solution-visual.swap{animation:solutionSwap .28s ease both}
+@keyframes solutionSwap{from{opacity:.35;transform:translateX(10px)}to{opacity:1;transform:none}}
+.solution-metric{display:flex;align-items:end;gap:14px;margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.10)}
+.solution-metric strong{font-size:52px;line-height:.9;letter-spacing:-.05em;color:var(--green)}
+.solution-metric span{font-size:12px;color:rgba(255,255,255,.62);max-width:150px;line-height:1.25}
+.visual-flow{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:34px 0 18px}
+.visual-node{min-width:120px;padding:17px 14px;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:rgba(255,255,255,.055);text-align:center}
+.visual-node b{display:block;color:#fff;font-size:13px}.visual-node span{display:block;margin-top:5px;color:rgba(255,255,255,.54);font-size:10px;line-height:1.3}
+.visual-arrow{color:var(--green);font-size:22px;font-weight:900}
+.visual-note{padding:15px 17px;border-left:3px solid var(--green);background:rgba(169,194,63,.08);color:rgba(255,255,255,.75);font-size:13px;line-height:1.5;border-radius:0 12px 12px 0}
+.intel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:27px 0 18px}
+.intel-card{padding:17px 14px;border:1px solid rgba(255,255,255,.11);border-radius:15px;background:rgba(255,255,255,.05)}
+.intel-card b{display:block;font-size:20px;color:var(--green);margin-bottom:5px}.intel-card span{font-size:10px;line-height:1.3;color:rgba(255,255,255,.58)}
+.framework-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:28px 0}
+.framework-item{padding:15px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10)}
+.framework-item b{display:block;color:var(--teal);font-size:12px;margin-bottom:4px}.framework-item span{color:rgba(255,255,255,.65);font-size:11px;line-height:1.35}
+@media(max-width:1120px){.solution-tabs{grid-template-columns:repeat(4,1fr)}.solution-stage{grid-template-columns:1fr 1fr}}
+@media(max-width:860px){.solution-tabs{grid-template-columns:repeat(2,1fr)}.solution-stage{grid-template-columns:1fr}.solution-visual{min-height:0}}
+@media(max-width:520px){.solution-tabs{grid-template-columns:1fr}.solution-tab{min-height:62px}.intel-grid,.framework-list{grid-template-columns:1fr}.solution-copy,.solution-visual{padding:22px}.visual-flow{justify-content:flex-start}.visual-arrow{transform:rotate(90deg)}}
+
 .demo{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:36px}
 .glass{
   border:1px solid rgba(255,255,255,.13);
@@ -583,26 +627,37 @@ footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--
  </div>
 </div></section>
 
-<section class="section-dark" id="response"><div class="wrap">
- <div class="eyebrow">Live response concept</div>
- <h2>Sometimes nobody can press SOS.</h2>
- <p class="lead">AI can identify potential distress indicators for human assessment — while discreet signals can give drivers another way to ask for help.</p>
- <div class="demo">
-   <div class="glass">
-     <span class="tag">SIMULATED JOURNEY</span>
-     <div class="timeline-row"><div class="time">12:43:17</div><div class="warn">Raised voices detected</div></div>
-     <div class="timeline-row"><div class="time">12:43:22</div><div class="warn">Behavioural risk indicator</div></div>
-     <div class="timeline-row"><div class="time">12:43:26</div><div class="crit">Driver distress gesture recognised</div></div>
-     <div class="timeline-row"><div class="time">12:43:27</div><div class="crit">Safety response activated</div></div>
-     <div class="timeline-row"><div class="time">12:43:39</div><div>Human operator assessing</div></div>
-     <div class="timeline-row"><div class="time">12:43:51</div><div class="ok">Driver assistance initiated</div></div>
-   </div>
-   <div class="glass">
-     <span class="tag">RESPONSE PERFORMANCE</span>
-     <div class="big">24 sec</div>
-     <h3>Silent signal to human response.</h3>
-     <p>AI detects. People decide. The operating model connects detection to intervention, incident management, evidence, escalation and learning.</p>
-   </div>
+<section class="section-dark solutions-section" id="response"><div class="wrap">
+ <div class="eyebrow">Proposed solutions</div>
+ <h2>One safety operating layer. Seven connected capabilities.</h2>
+ <p class="lead">The opportunity is not one feature or one piece of technology. It is a shared operating model that can detect risk, support people, manage incidents and turn industry-wide experience into better prevention.</p>
+
+ <div class="solution-tabs" id="solutionTabs" role="tablist" aria-label="Proposed safety solutions">
+  <button class="solution-tab active" type="button" role="tab" aria-selected="true" data-solution="detect"><span>01</span><b>Detect + Deter</b></button>
+  <button class="solution-tab" type="button" role="tab" aria-selected="false" data-solution="assist"><span>02</span><b>Emergency Assistance</b></button>
+  <button class="solution-tab" type="button" role="tab" aria-selected="false" data-solution="ai"><span>03</span><b>AI + Human Response</b></button>
+  <button class="solution-tab" type="button" role="tab" aria-selected="false" data-solution="intel"><span>04</span><b>Shared Intelligence</b></button>
+  <button class="solution-tab" type="button" role="tab" aria-selected="false" data-solution="register"><span>05</span><b>Safety Register</b></button>
+  <button class="solution-tab" type="button" role="tab" aria-selected="false" data-solution="framework"><span>06</span><b>Common Framework</b></button>
+  <button class="solution-tab" type="button" role="tab" aria-selected="false" data-solution="manage"><span>07</span><b>End-to-End Management</b></button>
+ </div>
+
+ <div class="solution-stage" id="solutionStage" aria-live="polite">
+  <div class="solution-copy">
+   <div class="solution-number" id="solutionNumber">01 — DETECT + DETER</div>
+   <h3 id="solutionTitle">Sometimes nobody can press SOS.</h3>
+   <p class="solution-hook" id="solutionHook">Use AI, telematics, cameras, audio and discreet distress signals to identify potential safety events earlier — then deploy an appropriate deterrent or escalate for human assessment.</p>
+   <div class="solution-points" id="solutionPoints"></div>
+   <div class="solution-outcome"><span>Potential outcome</span><strong id="solutionOutcome">Earlier detection. Earlier intervention. Less opportunity for harm to escalate.</strong></div>
+  </div>
+  <div class="solution-visual" id="solutionVisual">
+   <div class="visual-kicker">SIMULATED JOURNEY</div>
+   <div class="timeline-row"><div class="time">12:43:17</div><div class="warn">Raised voices detected</div></div>
+   <div class="timeline-row"><div class="time">12:43:22</div><div class="warn">Behavioural risk indicator</div></div>
+   <div class="timeline-row"><div class="time">12:43:26</div><div class="crit">Driver distress gesture recognised</div></div>
+   <div class="timeline-row"><div class="time">12:43:27</div><div class="ok">Deterrent / response activated</div></div>
+   <div class="solution-metric"><strong>24 sec</strong><span>silent signal to human response</span></div>
+  </div>
  </div>
 </div></section>
 
@@ -694,6 +749,27 @@ footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--
 })();
 </script>
 
+
+<script>
+(()=>{
+ const root=document.getElementById('solutionTabs');
+ const visual=document.getElementById('solutionVisual');
+ if(!root||!visual) return;
+ const data={
+  detect:{no:'01 — DETECT + DETER',title:'Sometimes nobody can press SOS.',hook:'Use AI, telematics, cameras, audio and discreet distress signals to identify potential safety events earlier — then deploy an appropriate deterrent or escalate for human assessment.',points:['Detect potential distress, unusual behaviour, crashes or other safety signals earlier.','Use discreet driver or rider signals where openly requesting help may increase risk.','Deploy proportionate deterrents, warnings or monitoring cues before behaviour escalates.'],outcome:'Earlier detection. Earlier intervention. Less opportunity for harm to escalate.',visual:`<div class="visual-kicker">SIMULATED JOURNEY</div><div class="timeline-row"><div class="time">12:43:17</div><div class="warn">Raised voices detected</div></div><div class="timeline-row"><div class="time">12:43:22</div><div class="warn">Behavioural risk indicator</div></div><div class="timeline-row"><div class="time">12:43:26</div><div class="crit">Driver distress gesture recognised</div></div><div class="timeline-row"><div class="time">12:43:27</div><div class="ok">Deterrent / response activated</div></div><div class="solution-metric"><strong>24 sec</strong><span>silent signal to human response</span></div>`},
+  assist:{no:'02 — EMERGENCY ASSISTANCE',title:'When the risk is serious, help should move quickly.',hook:'Create a defined escalation pathway that can move from a detected or reported threat to trained human support and, where necessary, emergency assistance.',points:['Rapid human verification of potentially serious distress or danger.','Escalation to emergency services, security or nominated support using agreed protocols.','Provide responders with the best available location, event and journey context.'],outcome:'Reduce the time between serious distress and meaningful assistance.',visual:`<div class="visual-kicker">ASSISTANCE PATHWAY</div><div class="visual-flow"><div class="visual-node"><b>Signal</b><span>AI • SOS • gesture • crash</span></div><div class="visual-arrow">→</div><div class="visual-node"><b>Human assess</b><span>Context + severity</span></div><div class="visual-arrow">→</div><div class="visual-node"><b>Deploy help</b><span>Emergency • security • support</span></div></div><div class="visual-note"><b>Key principle:</b> serious events move through a defined escalation framework rather than relying on ad-hoc hand-offs between teams.</div>`},
+  ai:{no:'03 — AI + HUMAN RESPONSE',title:'Use AI to accelerate judgement — not replace it.',hook:'AI can rapidly detect signals, organise incoming information and support triage. Trained people retain appropriate oversight and make consequential safety decisions.',points:['AI identifies, prioritises and enriches potential safety events at speed.','Human operators assess context, uncertainty and proportionality before consequential action.','Decision logic, interventions and escalations remain governed, explainable and auditable.'],outcome:'Scale safety response while preserving meaningful human judgement.',visual:`<div class="visual-kicker">OPERATING PRINCIPLE</div><div class="visual-flow"><div class="visual-node"><b>AI detects</b><span>Signals • anomalies • prioritisation</span></div><div class="visual-arrow">+</div><div class="visual-node"><b>Human assesses</b><span>Context • judgement • proportionality</span></div><div class="visual-arrow">=</div><div class="visual-node"><b>Governed response</b><span>Consistent • auditable • explainable</span></div></div><div class="visual-note"><b>AI detects. People decide.</b> The technology accelerates the work; the operating model governs what happens next.</div>`},
+  intel:{no:'04 — SHARED SAFETY INTELLIGENCE',title:'One operator sees incidents. A network sees patterns.',hook:'Aggregate and anonymise appropriate safety data across participating operators to identify trends, emerging risks and prevention opportunities that may remain invisible inside individual platforms.',points:['Create larger datasets for identifying recurring behaviours, locations, event types and systemic risks.','Share anonymised insights without unnecessarily exposing personal or commercially sensitive information.','Turn collective learning into improved controls, detection models and preventative interventions.'],outcome:'Move from isolated incident learning toward industry-wide prevention.',visual:`<div class="visual-kicker">NETWORK INTELLIGENCE</div><div class="intel-grid"><div class="intel-card"><b>A</b><span>Operator event data</span></div><div class="intel-card"><b>B</b><span>Operator event data</span></div><div class="intel-card"><b>C</b><span>Operator event data</span></div></div><div class="visual-flow"><div class="visual-node"><b>Anonymise + align</b><span>Common taxonomy</span></div><div class="visual-arrow">→</div><div class="visual-node"><b>Pattern detection</b><span>Trends • emerging risks</span></div><div class="visual-arrow">→</div><div class="visual-node"><b>Prevent</b><span>Controls • alerts • insight</span></div></div>`},
+  register:{no:'05 — INDUSTRY SAFETY REGISTER',title:'A substantiated serious risk should not disappear between platforms.',hook:'Create a tightly governed mechanism for sharing verified serious-safety information so an individual excluded for a substantiated serious event cannot simply move unnoticed to another participating platform.',points:['Apply defined evidence thresholds and verified identity before a record can be created.','Use strict access controls, review periods, audit trails, appeals and independent oversight.','Limit the capability to serious, substantiated safety risks — not allegations or routine performance issues.'],outcome:'Help remove known serious risks from the ecosystem while protecting fairness and due process.',visual:`<div class="visual-kicker">GOVERNED SAFETY REGISTER</div><div class="visual-flow"><div class="visual-node"><b>Investigate</b><span>Serious event</span></div><div class="visual-arrow">→</div><div class="visual-node"><b>Verify</b><span>Evidence + identity</span></div><div class="visual-arrow">→</div><div class="visual-node"><b>Review</b><span>Fairness + threshold</span></div><div class="visual-arrow">→</div><div class="visual-node"><b>Controlled check</b><span>Authorised platforms</span></div></div><div class="visual-note">Not a blacklist. A governed safety-intelligence capability with defined thresholds, privacy controls and procedural fairness.</div>`},
+  framework:{no:'06 — COMMON SAFETY + DATA FRAMEWORK',title:'Give the industry one language for safety.',hook:'Develop aligned event definitions, classifications, severity measures and data structures so operators, insurers and governments can interpret safety information consistently.',points:['Common event taxonomy and definitions across participating mobility operators.','Aligned severity, risk and escalation terminology for comparable reporting.','Structured data that supports regulator assurance and meaningful industry benchmarking.'],outcome:'Make safety data comparable, usable and meaningful across the ecosystem.',visual:`<div class="visual-kicker">COMMON VERNACULAR</div><div class="framework-list"><div class="framework-item"><b>EVENT TYPE</b><span>One consistent classification structure</span></div><div class="framework-item"><b>SEVERITY</b><span>Aligned consequence definitions and thresholds</span></div><div class="framework-item"><b>RISK</b><span>Common terminology for assessment and escalation</span></div><div class="framework-item"><b>REPORTING</b><span>Comparable fields, metrics and assurance data</span></div></div><div class="visual-note">Government can see an industry risk picture instead of trying to compare incompatible operator datasets.</div>`},
+  manage:{no:'07 — END-TO-END SAFETY MANAGEMENT',title:'Manage the whole event, not just the first few minutes.',hook:'Provide one operating layer for the safety-management work that follows detection and response — from case creation through investigation, evidence, insurance, regulatory obligations, corrective actions and closure.',points:['Consistent triage, reporting, investigation and evidence-management workflows.','Connect safety events to insurance, regulator notifications, actions and organisational learning.','Give operators enterprise-grade safety capability without each duplicating the same people, systems and processes.'],outcome:'Streamline safety management and reduce duplicated operating cost across platforms.',visual:`<div class="visual-kicker">END-TO-END CASE LIFECYCLE</div><div class="visual-flow"><div class="visual-node"><b>Report</b><span>Case created</span></div><div class="visual-arrow">→</div><div class="visual-node"><b>Investigate</b><span>Evidence + cause</span></div><div class="visual-arrow">→</div><div class="visual-node"><b>Coordinate</b><span>Insurance • regulator</span></div><div class="visual-arrow">→</div><div class="visual-node"><b>Close + learn</b><span>Actions • insight</span></div></div><div class="visual-note"><b>Commercial value:</b> shared capability can reduce duplicated teams, tooling and processes while maintaining each operator's own accountability.</div>`}
+ };
+ const no=document.getElementById('solutionNumber'),title=document.getElementById('solutionTitle'),hook=document.getElementById('solutionHook'),points=document.getElementById('solutionPoints'),outcome=document.getElementById('solutionOutcome');
+ function render(key){const d=data[key];if(!d)return;no.textContent=d.no;title.textContent=d.title;hook.textContent=d.hook;points.innerHTML=d.points.map((x,i)=>`<div class="solution-point"><i>${i+1}</i><span>${x}</span></div>`).join('');outcome.textContent=d.outcome;visual.innerHTML=d.visual;visual.classList.remove('swap');void visual.offsetWidth;visual.classList.add('swap');root.querySelectorAll('.solution-tab').forEach(btn=>{const on=btn.dataset.solution===key;btn.classList.toggle('active',on);btn.setAttribute('aria-selected',on?'true':'false')})}
+ root.addEventListener('click',e=>{const btn=e.target.closest('.solution-tab');if(btn)render(btn.dataset.solution)});
+ render('detect');
+})();
+</script>
 <script>
 (()=>{
  const opportunities={
