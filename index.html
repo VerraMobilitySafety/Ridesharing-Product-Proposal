@@ -211,16 +211,35 @@ h2{
 .section-dark .lead{color:rgba(255,255,255,.7)}
 .section-dark .eyebrow{color:var(--green)}
 
-.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:36px}
+.opportunity-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(320px,.65fr);gap:22px;align-items:stretch;margin-top:38px}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0}
 .step{
-  position:relative;overflow:hidden;
-  padding:20px 16px 22px;
-  min-height:132px;border-radius:18px;
+  appearance:none;text-align:left;font:inherit;color:var(--black);cursor:pointer;
+  position:relative;overflow:hidden;width:100%;
+  padding:20px 18px 20px;min-height:142px;border-radius:18px;
   background:linear-gradient(180deg,#fff,#f9faf8);
-  border:1px solid var(--line);box-shadow:0 12px 30px rgba(0,0,0,.04)
+  border:1px solid var(--line);box-shadow:0 12px 30px rgba(0,0,0,.04);
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,background .22s ease
 }
 .step::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,var(--green),var(--teal))}
-.step b{font-size:11px;color:var(--teal)}.step strong{display:block;margin-top:24px;font-size:17px}
+.step::after{content:"→";position:absolute;right:17px;bottom:15px;font-size:18px;font-weight:900;color:var(--teal);opacity:.35;transition:transform .22s ease,opacity .22s ease}
+.step b{font-size:11px;color:var(--teal);letter-spacing:.06em}.step strong{display:block;margin-top:24px;font-size:18px}.step span{display:block;margin-top:8px;font-size:12px;line-height:1.45;color:#77716d}
+.step:hover{transform:translateY(-3px);border-color:rgba(29,130,150,.38);box-shadow:0 18px 38px rgba(0,0,0,.07)}
+.step:hover::after{transform:translateX(3px);opacity:.8}
+.step.active{background:linear-gradient(145deg,rgba(29,130,150,.08),rgba(169,194,63,.10));border-color:rgba(29,130,150,.46);box-shadow:0 18px 42px rgba(29,130,150,.10)}
+.step.active::after{opacity:1;color:var(--green)}
+.step:focus-visible{outline:3px solid rgba(29,130,150,.24);outline-offset:3px}
+.opportunity-detail{position:relative;overflow:hidden;border-radius:24px;background:linear-gradient(145deg,var(--black),#514b47);color:white;padding:30px;min-height:296px;box-shadow:0 22px 55px rgba(61,57,53,.14)}
+.opportunity-detail::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 100% 0%,rgba(29,130,150,.25),transparent 42%),radial-gradient(circle at 0% 100%,rgba(169,194,63,.16),transparent 42%);pointer-events:none}
+.opportunity-detail-inner{position:relative;z-index:1;animation:oppIn .32s ease both}
+.opp-no{font-size:11px;font-weight:900;letter-spacing:.14em;color:var(--green);text-transform:uppercase}
+.opportunity-detail h3{font-size:34px;line-height:1.02;letter-spacing:-.035em;margin:10px 0 12px;color:#fff}
+.opp-hook{font-size:17px;line-height:1.45;color:rgba(255,255,255,.82);margin:0 0 22px}
+.opp-points{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.opp-points li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;color:rgba(255,255,255,.72);font-size:13px;line-height:1.45}
+.opp-points li::before{content:"";width:9px;height:9px;border-radius:50%;margin-top:5px;background:var(--green);box-shadow:0 0 0 4px rgba(169,194,63,.10)}
+.opp-footer{margin-top:22px;padding-top:17px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;font-weight:800;color:var(--teal);text-transform:uppercase;letter-spacing:.07em}
+@keyframes oppIn{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:translateX(0)}}
 
 .demo{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:36px}
 .glass{
@@ -330,6 +349,7 @@ footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--
   .hero-canvas{min-height:440px}
   .navlinks{display:none}
   .grid3,.demo,.registry-grid,.universe-shell{grid-template-columns:1fr}
+  .opportunity-grid{grid-template-columns:1fr}
   .flow{grid-template-columns:repeat(3,1fr)}
   .universe{min-height:540px}.universe svg{height:540px}
 }
@@ -384,11 +404,26 @@ footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--
 
 <section id="concept"><div class="wrap">
  <div class="eyebrow">The opportunity</div>
- <h2>The safety challenge isn't detection. It's connection.</h2>
- <p class="lead">A single mobility incident can involve the driver, rider, app, customer support, internal safety, insurance, emergency services and regulators. The opportunity is to connect that entire lifecycle through one human-led safety operating layer.</p>
- <div class="flow">
-  <div class="step"><b>01</b><strong>Detect</strong></div><div class="step"><b>02</b><strong>Assess</strong></div><div class="step"><b>03</b><strong>Intervene</strong></div>
-  <div class="step"><b>04</b><strong>Respond</strong></div><div class="step"><b>05</b><strong>Investigate</strong></div><div class="step"><b>06</b><strong>Learn</strong></div>
+ <h2>Detection matters. So does everything that follows.</h2>
+ <p class="lead">The opportunity is to manage the full safety lifecycle — detecting risk earlier, deterring escalation, deploying assistance, responding consistently, managing incidents end-to-end and learning across the industry.</p>
+ <div class="opportunity-grid">
+  <div class="flow" id="opportunityFlow">
+   <button class="step active" type="button" data-opp="detect"><b>01</b><strong>Detect</strong><span>See potential risk sooner.</span></button>
+   <button class="step" type="button" data-opp="deter"><b>02</b><strong>Deter</strong><span>Interrupt escalation early.</span></button>
+   <button class="step" type="button" data-opp="assist"><b>03</b><strong>Assist</strong><span>Get help to people faster.</span></button>
+   <button class="step" type="button" data-opp="respond"><b>04</b><strong>Respond</strong><span>AI-supported. Human-led.</span></button>
+   <button class="step" type="button" data-opp="manage"><b>05</b><strong>Manage</strong><span>One consistent framework.</span></button>
+   <button class="step" type="button" data-opp="learn"><b>06</b><strong>Learn</strong><span>Turn events into intelligence.</span></button>
+  </div>
+  <aside class="opportunity-detail" id="opportunityDetail" aria-live="polite">
+   <div class="opportunity-detail-inner" id="opportunityDetailInner">
+    <div class="opp-no" id="oppNo">01 — Detect</div>
+    <h3 id="oppTitle">See the event before someone has to report it.</h3>
+    <p class="opp-hook" id="oppHook">Use technology and behavioural signals to identify potential safety events earlier — including situations where nobody can safely press SOS.</p>
+    <ul class="opp-points" id="oppPoints"></ul>
+    <div class="opp-footer" id="oppFooter">Earlier visibility • earlier intervention</div>
+   </div>
+  </aside>
  </div>
 </div></section>
 
@@ -500,6 +535,32 @@ footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--
     clearTimeout(resizeTimer);
     resizeTimer=setTimeout(positionDots,120);
   },{passive:true});
+})();
+</script>
+
+<script>
+(()=>{
+ const opportunities={
+  detect:{no:'01 — Detect',title:'See the event before someone has to report it.',hook:'Use technology and behavioural signals to identify potential safety events earlier — including situations where nobody can safely press SOS.',points:['AI-supported detection using audio, video, telematics and behavioural anomalies.','Discreet driver or rider distress signals can trigger review without escalating the situation.','Human validation helps separate genuine risk from noise and false positives.'],footer:'Earlier visibility • earlier intervention'},
+  deter:{no:'02 — Deter',title:'Use detection to change the outcome.',hook:'Not every detected risk needs to become an incident. Appropriate interventions can discourage behaviour and interrupt escalation before harm occurs.',points:['In-vehicle or in-app warnings can make people aware that safety monitoring is active.','Targeted prompts, check-ins or operator contact can interrupt concerning behaviour.','Interventions can be risk-based, proportionate and governed rather than automatic enforcement.'],footer:'Detect • intervene • de-escalate'},
+  assist:{no:'03 — Assist',title:'When someone is in trouble, move quickly.',hook:'Connect a person in serious trouble with trained human support and the right assistance — with location and event context already available.',points:['Rapid human contact when an event reaches an agreed severity threshold.','Escalation to emergency services, security or other appropriate support when required.','Better context can help responders understand who, where and what they may be responding to.'],footer:'Right help • right context • faster'},
+  respond:{no:'04 — Respond',title:'AI can accelerate response. People remain accountable.',hook:'Use AI to help triage, prioritise and surface relevant information while trained people make safety decisions using a consistent response framework.',points:['AI summarises signals, evidence and risk indicators for rapid human assessment.','Common severity definitions and escalation protocols improve consistency across operators and markets.','A 24/7 operating layer reduces reliance on fragmented local teams or ad-hoc escalation.'],footer:'AI-supported • human-led • consistent'},
+  manage:{no:'05 — Manage',title:'Manage the entire incident, not just the first response.',hook:'Bring reporting, investigation, evidence, insurance, regulatory requirements and serious-risk management into one connected operating framework.',points:['One case can move from initial event through investigation, corrective action and closure.','Common risk and event vernacular gives operators and government comparable information.','A tightly governed serious-risk register could help stop substantiated high-risk actors simply moving between platforms.'],footer:'One framework • end-to-end management'},
+  learn:{no:'06 — Learn',title:'One event tells you what happened. Thousands show you the pattern.',hook:'Aggregate and anonymise safety information across participating operators to identify emerging risks, recurring behaviours and systemic issues.',points:['Shared intelligence can reveal trends that no single operator has enough data to see.','Aligned taxonomies, severity measures and reporting definitions create a common industry language.','Government and operators gain better visibility of industry risk without unnecessary exposure of personal or commercially sensitive information.'],footer:'Shared intelligence • prevention • assurance'}
+ };
+ const flow=document.getElementById('opportunityFlow');
+ const inner=document.getElementById('opportunityDetailInner');
+ if(!flow||!inner) return;
+ const no=document.getElementById('oppNo'),title=document.getElementById('oppTitle'),hook=document.getElementById('oppHook'),points=document.getElementById('oppPoints'),footer=document.getElementById('oppFooter');
+ function show(key){
+  const d=opportunities[key];if(!d)return;
+  flow.querySelectorAll('.step').forEach(b=>b.classList.toggle('active',b.dataset.opp===key));
+  inner.style.animation='none';void inner.offsetWidth;inner.style.animation='oppIn .32s ease both';
+  no.textContent=d.no;title.textContent=d.title;hook.textContent=d.hook;footer.textContent=d.footer;
+  points.replaceChildren(...d.points.map(t=>{const li=document.createElement('li');li.textContent=t;return li}));
+ }
+ flow.addEventListener('click',e=>{const b=e.target.closest('.step');if(b)show(b.dataset.opp)});
+ show('detect');
 })();
 </script>
 
