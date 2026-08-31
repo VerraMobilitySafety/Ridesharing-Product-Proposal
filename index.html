@@ -165,10 +165,11 @@ h1 .accent{
 .core strong{font-size:25px;line-height:1.02;letter-spacing:-.02em}.core span{display:block;font-size:11px;color:rgba(255,255,255,.76);margin-top:10px;letter-spacing:.02em}
 
 .dot{
-  position:absolute;z-index:7;width:142px;min-height:86px;padding:15px 15px 14px;border-radius:22px;
+  position:absolute;left:50%;top:50%;z-index:7;width:142px;min-height:86px;padding:15px 15px 14px;border-radius:22px;
   background:rgba(61,57,53,.80);border:1px solid rgba(29,130,150,.65);
   backdrop-filter:blur(15px);box-shadow:0 14px 42px rgba(0,0,0,.22),inset 0 0 22px rgba(29,130,150,.04);
-  will-change:transform,left,top;transition:border-color .25s ease,box-shadow .25s ease
+  will-change:transform;transform:translate3d(-50%,-50%,0);backface-visibility:hidden;
+  transition:border-color .25s ease,box-shadow .25s ease
 }
 .dot::before{content:"";display:block;width:21px;height:3px;border-radius:3px;background:var(--teal);margin-bottom:10px}
 .dot:nth-of-type(6)::before,.dot:nth-of-type(8)::before{background:var(--green)}
@@ -473,19 +474,16 @@ footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--
   function frame(ts){
     if(!start) start=ts;
     const t=(ts-start)/1000;
-    const box=canvas.getBoundingClientRect();
-    const cx=box.width/2, cy=box.height/2;
-    const R=Math.min(box.width,box.height);
+    const R=Math.min(canvas.clientWidth,canvas.clientHeight);
     nodes.forEach((n,i)=>{
-      const drift=Math.sin(t*n.speed*.34+n.phase)*0.055;
+      // Slow, continuous orbital drift. Transform-only animation avoids layout
+      // recalculation and the tiny pixel jumps that made the cards shudder.
+      const drift=Math.sin(t*n.speed*.22+n.phase)*0.045;
       const a=n.base+drift;
       const rr=R*n.radius;
-      const x=cx+Math.cos(a)*rr;
-      const y=cy+Math.sin(a)*rr;
-      const bob=Math.sin(t*n.speed+n.phase)*5;
-      n.el.style.left=x+'px';
-      n.el.style.top=(y+bob)+'px';
-      n.el.style.transform='translate(-50%,-50%)';
+      const x=Math.cos(a)*rr;
+      const y=Math.sin(a)*rr;
+      n.el.style.transform=`translate3d(calc(-50% + ${x}px), calc(-50% + ${y}px), 0)`;
     });
     requestAnimationFrame(frame);
   }
