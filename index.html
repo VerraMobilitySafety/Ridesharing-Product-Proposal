@@ -487,8 +487,8 @@ footer{background:#2e2b29;color:white;padding:42px 0;border-top:6px solid var(--
       const y=Math.round(Math.sin(angle)*R*radius);
       el.style.setProperty('--x',`${x}px`);
       el.style.setProperty('--y',`${y}px`);
-      el.style.setProperty('--float-duration',`${9.5 + (i%3)*1.8}s`);
-      el.style.setProperty('--float-delay',`${-i*1.15}s`);
+      el.style.setProperty('--float-duration',`${4.8 + (i%3)*0.75}s`);
+      el.style.setProperty('--float-delay',`${-i*0.7}s`);
       el.style.setProperty('--float-x',`${i%2===0 ? 16 : -16}px`);
       el.style.setProperty('--float-y',`${i%3===0 ? -12 : (i%3===1 ? 10 : 14)}px`);
     });
